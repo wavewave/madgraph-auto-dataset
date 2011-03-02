@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110302_2 where
+module HEP.Automation.MadGraph.Dataset.Set20110302v2 where
 
 
 import HEP.Automation.MadGraph.Model
@@ -45,16 +45,16 @@ axiparamset :: [Param]
 axiparamset = [ AxiGluonParam 1800.0 0.0 0.0 3.0 (-3.0) ] 
 
 psetuplist :: [ProcessSetup]
-psetuplist = [ psetup_wp_ttbar01j ]
+psetuplist = [ psetup_axi_ttbar01j ]
 
 sets :: [Int]
 sets = [1 .. 50 ]
 
 axitasklist :: [WorkSetup]
-axitasklist =  [ WS my_ssetup (psetup_wp_ttbar01j) 
+axitasklist =  [ WS my_ssetup (psetup_axi_ttbar01j) 
                               (rsetupGen p MLM (UserCutDef ucut)  num) 
                               my_csetup  
-                | p <- wpparamset 
+                | p <- axiparamset 
                 , num <- sets     ]
 
 totaltasklist :: [WorkSetup]

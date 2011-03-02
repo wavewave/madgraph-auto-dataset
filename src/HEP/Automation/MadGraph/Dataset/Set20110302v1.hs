@@ -1,6 +1,6 @@
 {-# LANGUAGE PackageImports #-}
 
-module HEP.Automation.MadGraph.Dataset.Set20110302_1 where
+module HEP.Automation.MadGraph.Dataset.Set20110302v1 where
 
 
 import HEP.Automation.MadGraph.Model
