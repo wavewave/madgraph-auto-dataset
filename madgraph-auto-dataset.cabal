@@ -13,7 +13,7 @@ Library
   hs-source-dirs: src
   ghc-options: 	-Wall -O2 -threaded -funbox-strict-fields -fno-warn-unused-do-bind
   ghc-prof-options: -caf-all -auto-all
-  Build-Depends: base>4, mtl>2, filepath > 1, ttbar>=0.0.2,
+  Build-Depends: base>4, mtl>2, filepath > 1,
                  madgraph-auto > 0.3, directory, process, tagsoup
   Exposed-Modules: 
                    HEP.Automation.MadGraph.Dataset.Set20110224
