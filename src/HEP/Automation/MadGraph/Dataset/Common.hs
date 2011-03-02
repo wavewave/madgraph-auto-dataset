@@ -6,10 +6,15 @@ import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
-rsetupGen :: Param -> MatchType -> UserCutSet -> Int -> RunSetup
-rsetupGen p matchtype ucuttype num = RS { 
+rsetupGen :: Param 
+             -> MatchType 
+             -> UserCutSet 
+             -> Int          -- ^ number of events 
+             -> Int          -- ^ set number
+             -> RunSetup
+rsetupGen p matchtype ucuttype numofevt set = RS { 
     param   = p
-  , numevent = 100000
+  , numevent = numofevt
   , machine = TeVatron 
   , rgrun   = Fixed
   , rgscale = 200.0 
@@ -22,5 +27,5 @@ rsetupGen p matchtype ucuttype num = RS {
       MLM     -> RunPYTHIA
   , usercut = ucuttype 
   , pgs     = RunPGS
-  , setnum  = num
+  , setnum  = set
 }

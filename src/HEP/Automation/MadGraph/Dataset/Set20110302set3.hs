@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110302v2 where
+module HEP.Automation.MadGraph.Dataset.Set20110302set3 where
 
 
 import HEP.Automation.MadGraph.Model
@@ -42,17 +42,20 @@ my_csetup :: ClusterSetup
 my_csetup = CS { cluster = Parallel 6 }
 
 axiparamset :: [Param]
-axiparamset = [ AxiGluonParam 1800.0 0.0 0.0 3.0 (-3.0) ] 
+axiparamset = [ AxiGluonParam mass 0.0 0.0 ga ga 
+              | mass <- [1600.0, 1800.0 .. 2400.0 ]  
+              , ga   <- [0.8, 1.2 .. 4.0 ] ] 
+          
 
 psetuplist :: [ProcessSetup]
 psetuplist = [ psetup_axi_ttbar01j ]
 
 sets :: [Int]
-sets = [1 .. 50 ]
+sets = [1]
 
 axitasklist :: [WorkSetup]
 axitasklist =  [ WS my_ssetup (psetup_axi_ttbar01j) 
-                              (rsetupGen p MLM (UserCutDef ucut) 100000 num) 
+                              (rsetupGen p MLM (UserCutDef ucut) 20000 num) 
                               my_csetup  
                 | p <- axiparamset 
                 , num <- sets     ]
