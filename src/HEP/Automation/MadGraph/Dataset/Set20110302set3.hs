@@ -55,7 +55,7 @@ sets = [1]
 
 axitasklist :: [WorkSetup]
 axitasklist =  [ WS my_ssetup (psetup_axi_ttbar01j) 
-                              (rsetupGen p MLM (UserCutDef ucut) 20000 num) 
+                              (rsetupGen p MLM NoUserCutDef NoPGS 20000 num) 
                               my_csetup  
                 | p <- axiparamset 
                 , num <- sets     ]

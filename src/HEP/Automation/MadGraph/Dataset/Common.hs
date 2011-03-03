@@ -9,10 +9,11 @@ import HEP.Automation.MadGraph.SetupType
 rsetupGen :: Param 
              -> MatchType 
              -> UserCutSet 
+             -> PGSType
              -> Int          -- ^ number of events 
              -> Int          -- ^ set number
              -> RunSetup
-rsetupGen p matchtype ucuttype numofevt set = RS { 
+rsetupGen p matchtype ucuttype pgstype numofevt set = RS { 
     param   = p
   , numevent = numofevt
   , machine = TeVatron 
@@ -26,6 +27,6 @@ rsetupGen p matchtype ucuttype numofevt set = RS {
       NoMatch -> NoPYTHIA
       MLM     -> RunPYTHIA
   , usercut = ucuttype 
-  , pgs     = RunPGS
+  , pgs     = pgstype
   , setnum  = set
 }
