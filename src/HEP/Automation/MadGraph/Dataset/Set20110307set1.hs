@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110304set2 where
+module HEP.Automation.MadGraph.Dataset.Set20110307set1 where
 
 
 import HEP.Automation.MadGraph.Model
@@ -11,9 +11,9 @@ import HEP.Automation.MadGraph.Dataset.Common
 
 my_ssetup :: ScriptSetup
 my_ssetup = SS {
-    scriptbase = "/home/wavewave/nfs/workspace/ttbar/mc_script/"
-  , mg5base    = "/home/wavewave/nfs/montecarlo/MG_ME_V4.4.44/MadGraph5_v0_6_1/"
-  , workbase   = "/home/wavewave/nfs/workspace/ttbar/mc/"
+    scriptbase = "/Users/iankim/mac/workspace/ttbar/mc_script/"
+  , mg5base    = "/Users/iankim/mac/montecarlo/MG_ME_V4.4.44/MadGraph5_v0_6_1/"
+  , workbase   = "/Users/iankim/mac/workspace/ttbar/mc/"
   }
 
 ucut :: UserCut
@@ -35,7 +35,7 @@ psetup_axi_ttbar01j = PS {
   , model = AxiGluon
   , process = processTTBar0or1jet 
   , processBrief = "ttbar01j"  
-  , workname   = "302Axi1J"
+  , workname   = "307Axi1J"
   }
 
 my_csetup :: ClusterSetup
@@ -43,19 +43,19 @@ my_csetup = CS { cluster = Parallel 6 }
 
 axiparamset :: [Param]
 axiparamset = [ AxiGluonParam mass 0.0 0.0 ga (-ga) 
-              | mass <- [1000.0, 1800.0 .. 2400.0 ]  
-              , ga   <- [0.0, 1.2 .. 4.0 ] ] 
+              | mass <- [1600.0]  
+              , ga   <- [2.4] ] 
           
 
 psetuplist :: [ProcessSetup]
 psetuplist = [ psetup_axi_ttbar01j ]
 
 sets :: [Int]
-sets = [1]
+sets = [1..50]
 
 axitasklist :: [WorkSetup]
 axitasklist =  [ WS my_ssetup (psetup_axi_ttbar01j) 
-                              (rsetupGen p MLM NoUserCutDef NoPGS 20000 num) 
+                              (rsetupGen p MLM NoUserCutDef NoPGS 100000 num) 
                               my_csetup  
                 | p <- axiparamset 
                 , num <- sets     ]
