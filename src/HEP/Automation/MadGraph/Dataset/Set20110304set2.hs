@@ -43,10 +43,9 @@ my_csetup = CS { cluster = Parallel 6 }
 
 axiparamset :: [Param]
 axiparamset = [ AxiGluonParam mass 0.0 0.0 ga (-ga) 
-              | mass <- [1000.0, 1800.0 .. 2400.0 ]  
-              , ga   <- [0.0, 1.2 .. 4.0 ] ] 
+              | mass <- [1000.0, 1200.0, 1400.0, 1600.0, 1800.0, 2000.0, 2200.0, 2400.0 ]  
+              , ga   <- [0.8, 1.2, 1.6, 2.0, 2.4, 2.8, 3.2, 3.6, 4.0 ]] 
           
-
 psetuplist :: [ProcessSetup]
 psetuplist = [ psetup_axi_ttbar01j ]
 
