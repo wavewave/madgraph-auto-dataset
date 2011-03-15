@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110314set1 where
+module HEP.Automation.MadGraph.Dataset.Set20110315set3 where
 
 
 import HEP.Automation.MadGraph.Model
@@ -16,50 +16,43 @@ my_ssetup = SS {
   , workbase   = "/Users/iankim/mac/workspace/ttbar/mc/"
   }
 
-ucut :: UserCut
-ucut = UserCut { 
-    uc_metcut    = 15.0 
-  , uc_etacutlep = 1.2 
-  , uc_etcutlep  = 18.0
-  , uc_etacutjet = 2.5
-  , uc_etcutjet  = 15.0 
-}
 
 processTTBar0or1jet :: [Char]
 processTTBar0or1jet =  
   "\ngenerate P P > t t~  QED=99 @1 \nadd process P P > t t~ J QED=99 @2 \n"
 
-psetup_zp_ttbar01j :: ProcessSetup
-psetup_zp_ttbar01j = PS {  
-    mversion = MadGraph4
-  , model = ZpH
+psetup_six_ttbar01j :: ProcessSetup
+psetup_six_ttbar01j = PS {  
+    mversion = MadGraph5
+  , model = Six
   , process = processTTBar0or1jet 
   , processBrief = "ttbar01j"  
-  , workname   = "314ZpH1J"
+  , workname   = "315Six1J"
   }
 
 my_csetup :: ClusterSetup
 my_csetup = CS { cluster = Parallel 3 }
 
-zpparamset :: [Param]
-zpparamset = [ ZpHParam mass g | mass <- [600.0] , g <- [2.6] ] 
+sixparamset :: [Param]
+sixparamset = [ SixParam mass g 
+                    | mass <- [700.0, 800.0 ]  
+                    , g   <- [0.6, 0.8 .. 4.0 ] ] 
           
 
 psetuplist :: [ProcessSetup]
-psetuplist = [ psetup_zp_ttbar01j ]
+psetuplist = [ psetup_six_ttbar01j ]
 
 sets :: [Int]
-sets = [1..50]
+sets = [1]
 
-zptasklist :: [WorkSetup]
-zptasklist =  [ WS my_ssetup (psetup_zp_ttbar01j) 
-                              (rsetupGen p MLM (UserCutDef ucut) RunPGS 100000 num) 
-                              my_csetup  
-                | p <- zpparamset 
-                , num <- sets     ]
+sixtasklist :: [WorkSetup]
+sixtasklist =  [ WS my_ssetup (psetup_six_ttbar01j) 
+                        (rsetupGen p MLM NoUserCutDef NoPGS 20000 num) 
+                        my_csetup  
+                 | p <- sixparamset , num <- sets     ]
 
 totaltasklist :: [WorkSetup]
-totaltasklist = zptasklist 
+totaltasklist = sixtasklist 
 
 
 
