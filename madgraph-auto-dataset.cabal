@@ -1,5 +1,5 @@
 Name:		madgraph-auto-dataset
-Version:	20110315.10
+Version:	20110315.14
 Synopsis:	madgraph-auto-dataset : for ttbar project dataset
 Description: 	for ttbar project dataset, I refactored this 
 License: 	GPL-3
@@ -44,6 +44,10 @@ Library
                    HEP.Automation.MadGraph.Dataset.Set20110315set8
                    HEP.Automation.MadGraph.Dataset.Set20110315set9
                    HEP.Automation.MadGraph.Dataset.Set20110315set10
+                   HEP.Automation.MadGraph.Dataset.Set20110315set11
+                   HEP.Automation.MadGraph.Dataset.Set20110315set12
+                   HEP.Automation.MadGraph.Dataset.Set20110315set13
+                   HEP.Automation.MadGraph.Dataset.Set20110315set14
 
 
 
