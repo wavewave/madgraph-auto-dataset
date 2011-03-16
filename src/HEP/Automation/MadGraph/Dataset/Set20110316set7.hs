@@ -35,7 +35,7 @@ psetup_six_ttbar01j = PS {
   , model = Six
   , process = processTTBar0or1jet 
   , processBrief = "ttbar01j"  
-  , workname   = "315Six1JBig"
+  , workname   = "316Six1JBig"
   }
 
 my_csetup :: ClusterSetup
