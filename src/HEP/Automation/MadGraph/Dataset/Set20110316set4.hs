@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110316set3 where
+module HEP.Automation.MadGraph.Dataset.Set20110315set11 where
 
 
 import HEP.Automation.MadGraph.Model
@@ -13,7 +13,7 @@ my_ssetup :: ScriptSetup
 my_ssetup = SS {
     scriptbase = "/home/wavewave/nfs/workspace/ttbar/mc_script/"
   , mg5base    = "/home/wavewave/nfs/montecarlo/MG_ME_V4.4.44/MadGraph5_v0_6_1/"
-  , workbase   = "/home/wavewave/nfs/workspace/ttbar/mc/"
+  , workbase   = "/home/wavewave/nfs//workspace/ttbar/mc/"
   }
 
 ucut :: UserCut
@@ -39,19 +39,19 @@ psetup_six_ttbar01j = PS {
   }
 
 my_csetup :: ClusterSetup
-my_csetup = CS { cluster = Parallel 8 }
+my_csetup = CS { cluster = Parallel 6 }
 
 sixparamset :: [Param]
 sixparamset = [ SixParam mass g 
-                    | mass <- [800.0 ]  
-                    , g   <- [2.4] ] 
+                    | mass <- [800.0]  
+                    , g   <- [2.4 ] ] 
           
 
 psetuplist :: [ProcessSetup]
 psetuplist = [ psetup_six_ttbar01j ]
 
 sets :: [Int]
-sets = [12]
+sets = [13]
 
 sixtasklist :: [WorkSetup]
 sixtasklist =  [ WS my_ssetup (psetup_six_ttbar01j) 
