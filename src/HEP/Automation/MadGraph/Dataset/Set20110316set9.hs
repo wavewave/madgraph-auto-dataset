@@ -11,7 +11,7 @@ import HEP.Automation.MadGraph.Dataset.Common
 
 my_ssetup :: ScriptSetup
 my_ssetup = SS {
-    scriptbase = "/nobackup/iankim/nfs/workspace/ttbar/mc_script/"
+    scriptbase = "/nobackup/iankim/nfs/workspace/ttbar/mc_script2/"
   , mg5base    = "/nobackup/iankim/montecarlo/MG_ME_V4.4.44/MadGraph5_v0_6_1/"
   , workbase   = "/nobackup/iankim/nfs/workspace/ttbar/mc/"
   }
