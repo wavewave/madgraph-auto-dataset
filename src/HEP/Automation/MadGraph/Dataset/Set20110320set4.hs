@@ -11,10 +11,17 @@ import HEP.Automation.MadGraph.SetupType
 
 my_ssetup :: ScriptSetup
 my_ssetup = SS {
+    scriptbase = "/Users/iankim/mac/workspace/ttbar/mc_script/"
+  , mg5base    = "/Users/iankim/mac/montecarlo/MG_ME_V4.4.44/MadGraph5_v0_6_1/"
+  , workbase   = "/Users/iankim/mac/workspace/ttbar/mc/"
+  }
+{-
+my_ssetup :: ScriptSetup
+my_ssetup = SS {
     scriptbase = "/nobackup/iankim/nfs/workspace/ttbar/mc_script2/"
   , mg5base    = "/nobackup/iankim/montecarlo/MG_ME_V4.4.44/MadGraph5_v0_6_1/"
   , workbase   = "/nobackup/iankim/nfs/workspace/ttbar/mc/"
-  }
+  } -}
 
 processWpPhiTopSemiLep :: [Char]
 processWpPhiTopSemiLep =  
@@ -41,7 +48,7 @@ psetup_wp_phitop_semilep = PS {
   , model = Wp
   , process = processWpPhiTopSemiLep
   , processBrief = "phit_semilep"  
-  , workname   = "321Wp1JSL"
+  , workname   = "322WpSemiLep"
   }
 
 psetup_zp_phitop_semilep :: ProcessSetup
@@ -50,7 +57,7 @@ psetup_zp_phitop_semilep = PS {
   , model = ZpH
   , process = processZpPhiTopSemiLep
   , processBrief = "phit_semilep"  
-  , workname   = "321Zp1JSL"
+  , workname   = "322ZpSemiLep"
   }
 
 psetup_trip_phitop_semilep :: ProcessSetup
@@ -59,7 +66,7 @@ psetup_trip_phitop_semilep = PS {
   , model = Trip
   , process = processTripPhiTopSemiLep
   , processBrief = "phit_semilep"  
-  , workname   = "321Trip1JSL"
+  , workname   = "322TripSemiLep"
   }
 
 psetup_six_phitop_semilep :: ProcessSetup
@@ -68,7 +75,7 @@ psetup_six_phitop_semilep = PS {
   , model = Six
   , process = processSixPhiTopSemiLep
   , processBrief = "phit_semilep"  
-  , workname   = "321Six1JSL"
+  , workname   = "322SixSemiLep"
   }
 
 
@@ -105,9 +112,10 @@ sixparamset = [ SixParam m 1.00 | m <- [200.0, 300.0,400.0,600.0] ]
 
 
 psetuplist :: [ProcessSetup]
-psetuplist = [ psetup_wp_phitop_semilep 
+psetuplist = [ {- psetup_wp_phitop_semilep 
              , psetup_zp_phitop_semilep 
-             , psetup_trip_phitop_semilep
+             , -}
+               psetup_trip_phitop_semilep
              , psetup_six_phitop_semilep ]
 
 
@@ -138,7 +146,7 @@ sixtasklist =  [ WS my_ssetup (psetup_six_phitop_semilep) (rsetupLHC7 p num) my_
 
 
 totaltasklist :: [WorkSetup]
-totaltasklist = wptasklist ++ zptasklist ++ triptasklist ++ sixtasklist 
+totaltasklist = {- wptasklist ++ zptasklist ++ -} triptasklist ++ sixtasklist 
 
 
 

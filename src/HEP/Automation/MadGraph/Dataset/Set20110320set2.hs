@@ -41,7 +41,7 @@ psetup_wp_phitop_semitau = PS {
   , model = Wp
   , process = processWpPhiTopSemiTau
   , processBrief = "phit_semitau"  
-  , workname   = "320Wp1J"
+  , workname   = "322WpSemiTau"
   }
 
 psetup_zp_phitop_semitau :: ProcessSetup
@@ -50,7 +50,7 @@ psetup_zp_phitop_semitau = PS {
   , model = ZpH
   , process = processZpPhiTopSemiTau
   , processBrief = "phit_semitau"  
-  , workname   = "320Zp1J"
+  , workname   = "322ZpSemiTau"
   }
 
 psetup_trip_phitop_semitau :: ProcessSetup
@@ -59,7 +59,7 @@ psetup_trip_phitop_semitau = PS {
   , model = Trip
   , process = processTripPhiTopSemiTau
   , processBrief = "phit_semitau"  
-  , workname   = "320Trip1J"
+  , workname   = "322TripSemiTau"
   }
 
 psetup_six_phitop_semitau :: ProcessSetup
@@ -68,7 +68,7 @@ psetup_six_phitop_semitau = PS {
   , model = Six
   , process = processSixPhiTopSemiTau
   , processBrief = "phit_semitau"  
-  , workname   = "320Six1J"
+  , workname   = "322SixSemiTau"
   }
 
 
@@ -91,7 +91,7 @@ my_csetup :: ClusterSetup
 my_csetup = CS { cluster = Parallel 3 }
 
 wpparamset :: [Param]
-wpparamset = [ WpParam m 1.00 | m <- [300.0,400.0,600.0] ]
+wpparamset = [ WpParam m 1.00 | m <- [200.0, 300.0,400.0,600.0] ]
 
 
 zpparamset :: [Param]

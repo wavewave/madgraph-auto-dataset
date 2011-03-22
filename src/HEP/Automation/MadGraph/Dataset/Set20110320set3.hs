@@ -11,10 +11,17 @@ import HEP.Automation.MadGraph.SetupType
 
 my_ssetup :: ScriptSetup
 my_ssetup = SS {
+    scriptbase = "/Users/iankim/mac/workspace/ttbar/mc_script/"
+  , mg5base    = "/Users/iankim/mac/montecarlo/MG_ME_V4.4.44/MadGraph5_v0_6_1/"
+  , workbase   = "/Users/iankim/mac/workspace/ttbar/mc/"
+  }
+{-
+my_ssetup :: ScriptSetup
+my_ssetup = SS {
     scriptbase = "/nobackup/iankim/nfs/workspace/ttbar/mc_script/"
   , mg5base    = "/nobackup/iankim/montecarlo/MG_ME_V4.4.44/MadGraph5_v0_6_1/"
   , workbase   = "/nobackup/iankim/nfs/workspace/ttbar/mc/"
-  }
+  } -}
 
 processWpPhiTopFullTau :: [Char]
 processWpPhiTopFullTau =  
@@ -41,7 +48,7 @@ psetup_wp_phitop_fulltau = PS {
   , model = Wp
   , process = processWpPhiTopFullTau
   , processBrief = "phit_fulltau"  
-  , workname   = "321Wp1JFT"
+  , workname   = "322WpFullTau"
   }
 
 psetup_zp_phitop_fulltau :: ProcessSetup
@@ -50,7 +57,7 @@ psetup_zp_phitop_fulltau = PS {
   , model = ZpH
   , process = processZpPhiTopFullTau
   , processBrief = "phit_fulltau"  
-  , workname   = "321Zp1JFT"
+  , workname   = "322ZpFullTau"
   }
 
 psetup_trip_phitop_fulltau :: ProcessSetup
@@ -59,7 +66,7 @@ psetup_trip_phitop_fulltau = PS {
   , model = Trip
   , process = processTripPhiTopFullTau
   , processBrief = "phit_fulltau"  
-  , workname   = "321Trip1JFT"
+  , workname   = "322TripFullTau"
   }
 
 psetup_six_phitop_fulltau :: ProcessSetup
@@ -68,7 +75,7 @@ psetup_six_phitop_fulltau = PS {
   , model = Six
   , process = processSixPhiTopFullTau
   , processBrief = "phit_fulltau"  
-  , workname   = "321Six1JFT"
+  , workname   = "322SixFullTau"
   }
 
 
@@ -105,9 +112,10 @@ sixparamset = [ SixParam m 1.00 | m <- [200.0, 300.0,400.0,600.0] ]
 
 
 psetuplist :: [ProcessSetup]
-psetuplist = [ psetup_wp_phitop_fulltau
+psetuplist = {- [ psetup_wp_phitop_fulltau
              , psetup_zp_phitop_fulltau 
-             , psetup_trip_phitop_fulltau
+             , -} 
+             [ psetup_trip_phitop_fulltau
              , psetup_six_phitop_fulltau ]
 
 
@@ -138,7 +146,7 @@ sixtasklist =  [ WS my_ssetup (psetup_six_phitop_fulltau) (rsetupLHC7 p num) my_
 
 
 totaltasklist :: [WorkSetup]
-totaltasklist = wptasklist ++ zptasklist ++ triptasklist ++ sixtasklist 
+totaltasklist = {- wptasklist ++ zptasklist ++ -} triptasklist ++ sixtasklist 
 
 
 
