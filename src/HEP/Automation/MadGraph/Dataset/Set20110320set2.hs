@@ -105,7 +105,8 @@ sixparamset = [ SixParam m 1.00 | m <- [200.0, 300.0,400.0,600.0] ]
 
 
 psetuplist :: [ProcessSetup]
-psetuplist = [ psetup_zp_phitop_semitau 
+psetuplist = [ psetup_wp_phitop_semitau
+             , psetup_zp_phitop_semitau 
              , psetup_trip_phitop_semitau
              , psetup_six_phitop_semitau ]
 
