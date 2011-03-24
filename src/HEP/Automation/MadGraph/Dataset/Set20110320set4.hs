@@ -112,10 +112,9 @@ sixparamset = [ SixParam m 1.00 | m <- [200.0, 300.0,400.0,600.0] ]
 
 
 psetuplist :: [ProcessSetup]
-psetuplist = [ {- psetup_wp_phitop_semilep 
+psetuplist = [ psetup_wp_phitop_semilep 
              , psetup_zp_phitop_semilep 
-             , -}
-               psetup_trip_phitop_semilep
+             , psetup_trip_phitop_semilep
              , psetup_six_phitop_semilep ]
 
 
@@ -146,7 +145,7 @@ sixtasklist =  [ WS my_ssetup (psetup_six_phitop_semilep) (rsetupLHC7 p num) my_
 
 
 totaltasklist :: [WorkSetup]
-totaltasklist = {- wptasklist ++ zptasklist ++ -} triptasklist ++ sixtasklist 
+totaltasklist = wptasklist ++ zptasklist ++ triptasklist ++ sixtasklist 
 
 
 
