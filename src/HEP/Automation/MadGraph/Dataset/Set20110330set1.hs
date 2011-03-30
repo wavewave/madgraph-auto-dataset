@@ -9,7 +9,7 @@ import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Dataset.Common
 
-import HEP.Automation.MadGraph.Dataset.SUSY
+import HEP.Automation.MadGraph.Dataset.Desktop
 
 
 processTB :: [Char]
