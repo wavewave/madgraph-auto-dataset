@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.DataSet.SUSY where
+module HEP.Automation.MadGraph.Dataset.Desktop where
 
 
 import HEP.Automation.MadGraph.Model

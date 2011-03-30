@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110315set3 where
+module HEP.Automation.MadGraph.Dataset.Set20110330set1 where
 
 
 import HEP.Automation.MadGraph.Model
@@ -29,7 +29,7 @@ my_csetup :: ClusterSetup
 my_csetup = CS { cluster = Parallel 6 }
 
 sixparamset :: [Param]
-sixparamset = [ SixParam mass g g
+sixparamset = [ SixFullParam mass g g
                     | mass <- [200.0, 500.0, 800.0 ]  
                     , g   <- [0.6, 1.0 .. 4.0 ] ] 
           
