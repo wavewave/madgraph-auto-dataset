@@ -14,7 +14,7 @@ import HEP.Automation.MadGraph.Dataset.SUSY
 
 processTB :: [Char]
 processTB =  
-  "\ngenerate P P > t b / g a z h w+ w-  QED=99"
+  "\ngenerate P P > t b / g a z h w+ w-  QED=99 @1\nadd process P P > t~ b~ / g a z h w+ w- QED=99 @2\n"
 
 psetup_wpzpfull_bb :: ProcessSetup
 psetup_wpzpfull_bb = PS {  
@@ -43,7 +43,7 @@ sets = [1]
 
 wpzptasklist :: [WorkSetup]
 wpzptasklist =  [ WS my_ssetup (psetup_wpzpfull_bb) 
-                        (rsetupGen p MLM NoUserCutDef NoPGS 20000 num) 
+                        (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
                         my_csetup  
                  | p <- wpzpparamset , num <- sets     ]
 
