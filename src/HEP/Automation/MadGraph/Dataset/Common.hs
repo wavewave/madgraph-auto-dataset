@@ -6,6 +6,32 @@ import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
+rsetupLHC :: Param 
+             -> MatchType 
+             -> UserCutSet 
+             -> PGSType
+             -> Int          -- ^ number of events 
+             -> Int          -- ^ set number
+             -> RunSetup
+rsetupLHC p matchtype ucuttype pgstype numofevt set = RS { 
+    param   = p
+  , numevent = numofevt
+  , machine = LHC7
+  , rgrun   = Fixed
+  , rgscale = 200.0 
+  , match   = matchtype
+  , cut     = case matchtype of 
+      NoMatch -> NoCut 
+      MLM     -> DefCut
+  , pythia  = case matchtype of 
+      NoMatch -> NoPYTHIA
+      MLM     -> RunPYTHIA
+  , usercut = ucuttype 
+  , pgs     = pgstype
+  , setnum  = set
+}
+
+
 rsetupGen :: Param 
              -> MatchType 
              -> UserCutSet 

@@ -47,8 +47,16 @@ wpzptasklist =  [ WS my_ssetup (psetup_wpzpfull_bb)
                         my_csetup  
                  | p <- wpzpparamset , num <- sets     ]
 
+wpzptasklist2 :: [WorkSetup]
+wpzptasklist2 =  [ WS my_ssetup (psetup_wpzpfull_bb) 
+                         (rsetupLHC p NoMatch NoUserCutDef NoPGS 20000 num) 
+                         my_csetup  
+                 | p <- wpzpparamset , num <- sets     ]
+
+
+
 totaltasklist :: [WorkSetup]
-totaltasklist = wpzptasklist 
+totaltasklist = wpzptasklist ++ wpzptasklist2 
 
 
 
