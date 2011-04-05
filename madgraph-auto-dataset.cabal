@@ -14,7 +14,7 @@ Library
   ghc-options: 	-Wall -O2 -threaded -funbox-strict-fields -fno-warn-unused-do-bind
   ghc-prof-options: -caf-all -auto-all
   Build-Depends: base>4, mtl>2, filepath > 1,
-                 madgraph-auto > 0.3, directory, process, tagsoup
+                 madgraph-auto > 0.3, madgraph-auto < 0.3.5, directory, process, tagsoup
   Exposed-Modules: 
                    HEP.Automation.MadGraph.Dataset.Common
                    HEP.Automation.MadGraph.Dataset.SUSY
