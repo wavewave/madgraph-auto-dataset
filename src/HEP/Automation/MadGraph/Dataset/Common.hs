@@ -6,13 +6,13 @@ import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
-rsetupLHC :: Param 
+rsetupLHC :: (Model a) => ModelParam a 
              -> MatchType 
              -> UserCutSet 
              -> PGSType
              -> Int          -- ^ number of events 
              -> Int          -- ^ set number
-             -> RunSetup
+             -> RunSetup a
 rsetupLHC p matchtype ucuttype pgstype numofevt set = RS { 
     param   = p
   , numevent = numofevt
@@ -32,13 +32,13 @@ rsetupLHC p matchtype ucuttype pgstype numofevt set = RS {
 }
 
 
-rsetupGen :: Param 
+rsetupGen :: (Model a) => ModelParam a 
              -> MatchType 
              -> UserCutSet 
              -> PGSType
              -> Int          -- ^ number of events 
              -> Int          -- ^ set number
-             -> RunSetup
+             -> RunSetup a
 rsetupGen p matchtype ucuttype pgstype numofevt set = RS { 
     param   = p
   , numevent = numofevt
