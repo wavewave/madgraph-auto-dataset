@@ -18,10 +18,10 @@ processHW :: [Char]
 processHW =  
   "\ngenerate P P > h w+ QED=99 @1\nadd process P P > h w- QED=99 @2" 
 
-psetup_sm_hw :: ProcessSetup SM
+psetup_sm_hw :: ProcessSetup SMHiggs
 psetup_sm_hw = PS {  
     mversion = MadGraph5
-  , model = SM
+  , model = SMHiggs
   , process = processHW
   , processBrief = "hw"  
   , workname   = "407SM_HW"
@@ -30,17 +30,17 @@ psetup_sm_hw = PS {
 my_csetup :: ClusterSetup
 my_csetup = CS { cluster = Parallel 3 }
 
-smFullParamSet :: [ModelParam SM]
-smFullParamSet = [ SMParam ]
+smFullParamSet :: [ModelParam SMHiggs]
+smFullParamSet = [ SMHiggsParam m w | m <- [120.0], w <- [5.753e-3] ]
           
 
-psetuplist :: [ProcessSetup SM]
+psetuplist :: [ProcessSetup SMHiggs]
 psetuplist = [ psetup_sm_hw ]
 
 sets :: [Int]
 sets = [1]
 
-smtasklist :: [WorkSetup SM]
+smtasklist :: [WorkSetup SMHiggs]
 smtasklist =  [ WS my_ssetup (psetup_sm_hw) 
                      (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
                      my_csetup  
@@ -48,7 +48,7 @@ smtasklist =  [ WS my_ssetup (psetup_sm_hw)
 
 
 
-totaltasklist :: [WorkSetup SM]
+totaltasklist :: [WorkSetup SMHiggs]
 totaltasklist = smtasklist 
 
 
