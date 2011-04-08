@@ -7,10 +7,9 @@ import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Dataset.Common
-import HEP.Automation.MadGraph.Dataset.SUSY
-
 import HEP.Automation.MadGraph.Model.ZpHFull
+
+import HEP.Automation.MadGraph.Dataset.Common
 
 import qualified Data.ByteString as B
 
@@ -27,9 +26,6 @@ psetup_zphfull_TopZpDecay = PS {
   , workname   = "407ZpH_TopZpDecay"
   }
 
-my_csetup :: ClusterSetup
-my_csetup = CS { cluster = Parallel 3 }
-
 zpHFullParamSet :: [ModelParam ZpHFull]
 zpHFullParamSet = [ ZpHFullParam m g g 
                     | m <-[150.0] 
@@ -42,15 +38,15 @@ psetuplist = [ psetup_zphfull_TopZpDecay ]
 sets :: [Int]
 sets = [1]
 
-zptasklist :: [WorkSetup ZpHFull]
-zptasklist =  [ WS my_ssetup (psetup_zphfull_TopZpDecay) 
-                     (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
-                     my_csetup  
-                 | p <- zpHFullParamSet , num <- sets     ]
+zptasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpHFull]
+zptasklist ssetup csetup =  
+  [ WS ssetup (psetup_zphfull_TopZpDecay) 
+       (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
+       csetup  
+  | p <- zpHFullParamSet , num <- sets     ]
 
 
-
-totaltasklist :: [WorkSetup ZpHFull]
+totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpHFull]
 totaltasklist = zptasklist 
 
 

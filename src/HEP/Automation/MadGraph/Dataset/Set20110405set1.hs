@@ -7,10 +7,9 @@ import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Dataset.Common
-import HEP.Automation.MadGraph.Dataset.SUSY
-
 import HEP.Automation.MadGraph.Model.WpZpFull
+
+import HEP.Automation.MadGraph.Dataset.Common
 
 processTB :: [Char]
 processTB =  
@@ -25,9 +24,6 @@ psetup_wpzpfull_bb = PS {
   , workname   = "405WpZpFull"
   }
 
-my_csetup :: ClusterSetup
-my_csetup = CS { cluster = Parallel 3 }
-
 wpzpparamset :: [ModelParam WpZpFull]
 wpzpparamset = [ WpZpFullParam m m gW gW gZ gZ gZ gZ 
                     | m <-[150.0] 
@@ -41,22 +37,24 @@ psetuplist = [ psetup_wpzpfull_bb ]
 sets :: [Int]
 sets = [1]
 
-wpzptasklist :: [WorkSetup WpZpFull]
-wpzptasklist =  [ WS my_ssetup (psetup_wpzpfull_bb) 
-                        (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
-                        my_csetup  
-                 | p <- wpzpparamset , num <- sets     ]
+wpzptasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup WpZpFull]
+wpzptasklist ssetup csetup =  
+  [ WS ssetup (psetup_wpzpfull_bb) 
+       (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
+       csetup  
+  | p <- wpzpparamset , num <- sets     ]
 
-wpzptasklist2 :: [WorkSetup WpZpFull]
-wpzptasklist2 =  [ WS my_ssetup (psetup_wpzpfull_bb) 
-                         (rsetupLHC p NoMatch NoUserCutDef NoPGS 20000 num) 
-                         my_csetup  
-                 | p <- wpzpparamset , num <- sets     ]
+wpzptasklist2 :: ScriptSetup -> ClusterSetup -> [WorkSetup WpZpFull]
+wpzptasklist2 ssetup csetup =  
+  [ WS ssetup (psetup_wpzpfull_bb) 
+       (rsetupLHC p NoMatch NoUserCutDef NoPGS 20000 num) 
+       csetup  
+  | p <- wpzpparamset , num <- sets     ]
 
 
-
-totaltasklist :: [WorkSetup WpZpFull]
-totaltasklist = wpzptasklist ++ wpzptasklist2 
+totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup WpZpFull]
+totaltasklist ssetup csetup = 
+  wpzptasklist ssetup csetup ++ wpzptasklist2 ssetup csetup
 
 
 

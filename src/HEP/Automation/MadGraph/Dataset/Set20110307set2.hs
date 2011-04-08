@@ -8,18 +8,8 @@ import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Dataset.Common
-import HEP.Automation.MadGraph.Dataset.SUSY
 
 import HEP.Automation.MadGraph.Model.ZpH
-
-{-
-my_ssetup :: ScriptSetup
-my_ssetup = SS {
-    scriptbase = "/home/wavewave/nfs/workspace/ttbar/mc_script/"
-  , mg5base    = "/home/wavewave/nfs/montecarlo/MG_ME_V4.4.44/MadGraph5_v0_6_1/"
-  , workbase   = "/home/wavewave/nfs/workspace/ttbar/mc/"
-  }
--}
 
 ucut :: UserCut
 ucut = UserCut { 
@@ -56,14 +46,15 @@ psetuplist = [ psetup_zp_ttbar01j ]
 sets :: [Int]
 sets = [1..10]
 
-zptasklist :: [WorkSetup ZpH]
-zptasklist =  [ WS my_ssetup (psetup_zp_ttbar01j) 
-                              (rsetupGen p MLM (UserCutDef ucut) RunPGS 100000 num) 
-                              my_csetup  
-                | p <- zpparamset 
-                , num <- sets     ]
+zptasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpH]
+zptasklist ssetup csetup =  
+  [ WS ssetup (psetup_zp_ttbar01j) 
+       (rsetupGen p MLM (UserCutDef ucut) RunPGS 100000 num) 
+       csetup  
+     | p <- zpparamset 
+     , num <- sets     ]
 
-totaltasklist :: [WorkSetup ZpH]
+totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpH]
 totaltasklist = zptasklist 
 
 

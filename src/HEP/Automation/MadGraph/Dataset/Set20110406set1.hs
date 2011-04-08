@@ -44,7 +44,17 @@ sets = [1]
 
 zptasklist :: [WorkSetup ZpHFull]
 zptasklist =  [ WS my_ssetup (psetup_zphfull_semizp) 
-                     (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
+                   RS { param = p
+                      , numevent = 10000
+                      , machine = TeVatron
+                      , rgrun = Fixed
+                      , rgscale = 200.0
+                      , match = NoMatch
+                      , cut = DefCut
+                      , pythia = NoPYTHIA
+                      , usercut = NoUserCutDef
+                      , pgs = NoPGS
+                      , setnum = num } 
                      my_csetup  
                  | p <- zpHFullParamSet , num <- sets     ]
 
