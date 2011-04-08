@@ -31,7 +31,7 @@ my_csetup :: ClusterSetup
 my_csetup = CS { cluster = Parallel 3 }
 
 smFullParamSet :: [ModelParam SMHiggs]
-smFullParamSet = [ SMHiggsParam m w | m <- [120.0], w <- [5.753e-3] ]
+smFullParamSet = [ SMHiggsParam m w | m <- [144.0], w <- [1e-3] ]
           
 
 psetuplist :: [ProcessSetup SMHiggs]
@@ -42,8 +42,18 @@ sets = [1]
 
 smtasklist :: [WorkSetup SMHiggs]
 smtasklist =  [ WS my_ssetup (psetup_sm_hw) 
-                     (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
-                     my_csetup  
+                   RS { param = p
+                      , numevent = 10000
+                      , machine = TeVatron
+                      , rgrun = Auto
+                      , rgscale = 200.0
+                      , match = NoMatch
+                      , cut = NoCut
+                      , pythia = NoPYTHIA
+                      , usercut = NoUserCutDef
+                      , pgs = NoPGS
+                      , setnum = num } 
+                   my_csetup  
                  | p <- smFullParamSet , num <- sets     ]
 
 
