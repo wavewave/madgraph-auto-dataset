@@ -23,7 +23,7 @@ psetup_singlet_ttbar = PS {
   , model = Singlet
   , process = processTTBar
   , processBrief = "ttbar" 
-  , workname   = "411Singlet_TTBar"
+  , workname   = "412Singlet_TTBar"
   }
 
 singletParamSet :: [ModelParam Singlet]
