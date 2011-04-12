@@ -33,7 +33,7 @@ psetuplist :: [ProcessSetup ZpH]
 psetuplist = [ psetup_zp_SingleTZpSemiLep ]
 
 sets :: [Int]
-sets = [101,102,201,202,301,302,401,402,501,502,601,602,701,702,801,802,901,902,1001,1002]
+sets = [1,2,3,4,5] 
 
 zptasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpH]
 zptasklist ssetup csetup =  
