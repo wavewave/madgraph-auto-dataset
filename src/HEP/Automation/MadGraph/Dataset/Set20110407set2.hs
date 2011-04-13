@@ -1,5 +1,6 @@
 module HEP.Automation.MadGraph.Dataset.Set20110407set2 where
 
+import HEP.Storage.WebDAV
 
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
@@ -43,6 +44,7 @@ zptasklist ssetup csetup =
   [ WS ssetup (psetup_zphfull_TopZpDecay) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
        csetup  
+       (WebDAVRemoteDir undefined) 
   | p <- zpHFullParamSet , num <- sets     ]
 
 

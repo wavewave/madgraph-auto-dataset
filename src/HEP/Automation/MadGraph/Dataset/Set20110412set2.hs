@@ -1,5 +1,6 @@
 module HEP.Automation.MadGraph.Dataset.Set20110412set2 where
 
+import HEP.Storage.WebDAV
 
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
@@ -43,6 +44,7 @@ octettasklist ssetup csetup =
   [ WS ssetup (psetup_octet_ttbar) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 10000 num) 
        csetup  
+       (WebDAVRemoteDir "mc/TeVatronFor3/Octet0412ScanTTBar")
   | p <- octetParamSet , num <- sets     ]
 
 

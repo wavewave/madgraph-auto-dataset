@@ -1,5 +1,6 @@
 module HEP.Automation.MadGraph.Dataset.Set20110412set1 where
 
+import HEP.Storage.WebDAV
 
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
@@ -43,6 +44,7 @@ singlettasklist ssetup csetup =
   [ WS ssetup (psetup_singlet_ttbar) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 10000 num) 
        csetup  
+       (WebDAVRemoteDir "mc/TeVatronFor3/Singlet012ScanTTBar")
   | p <- singletParamSet , num <- sets     ]
 
 

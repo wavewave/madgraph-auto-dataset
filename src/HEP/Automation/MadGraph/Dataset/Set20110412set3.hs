@@ -1,5 +1,6 @@
 module HEP.Automation.MadGraph.Dataset.Set20110412set3 where
 
+import HEP.Storage.WebDAV
 
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
@@ -43,6 +44,7 @@ triptasklist ssetup csetup =
   [ WS ssetup (psetup_trip_ttbar) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 10000 num) 
        csetup  
+       (WebDAVRemoteDir "Trip0412ScanTTBar")
   | p <- tripParamSet , num <- sets     ]
 
 

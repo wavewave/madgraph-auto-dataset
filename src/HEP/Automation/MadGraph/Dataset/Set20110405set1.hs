@@ -1,5 +1,6 @@
 module HEP.Automation.MadGraph.Dataset.Set20110405set1 where
 
+import HEP.Storage.WebDAV
 
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
@@ -42,6 +43,7 @@ wpzptasklist ssetup csetup =
   [ WS ssetup (psetup_wpzpfull_bb) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
        csetup  
+       (WebDAVRemoteDir undefined)
   | p <- wpzpparamset , num <- sets     ]
 
 wpzptasklist2 :: ScriptSetup -> ClusterSetup -> [WorkSetup WpZpFull]
@@ -49,6 +51,7 @@ wpzptasklist2 ssetup csetup =
   [ WS ssetup (psetup_wpzpfull_bb) 
        (rsetupLHC p NoMatch NoUserCutDef NoPGS 20000 num) 
        csetup  
+       (WebDAVRemoteDir undefined)
   | p <- wpzpparamset , num <- sets     ]
 
 
