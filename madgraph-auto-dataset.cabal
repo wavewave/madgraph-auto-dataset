@@ -14,7 +14,7 @@ Library
   ghc-options: 	-Wall -O2 -threaded -funbox-strict-fields -fno-warn-unused-do-bind
   ghc-prof-options: -caf-all -auto-all
   Build-Depends: base>4, mtl>2, filepath > 1,
-                 madgraph-auto > 0.3.7, madgraph-auto-model == 0.1.4.0, 
+                 madgraph-auto > 0.3.7, madgraph-auto-model > 0.1.4.0, 
                  webdav-manager, 
                  MSSMType > 0.0.1 , bytestring,
                  directory, process, tagsoup
