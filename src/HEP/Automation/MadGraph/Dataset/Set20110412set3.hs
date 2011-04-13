@@ -44,7 +44,7 @@ triptasklist ssetup csetup =
   [ WS ssetup (psetup_trip_ttbar) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 10000 num) 
        csetup  
-       (WebDAVRemoteDir "Trip0412ScanTTBar")
+       (WebDAVRemoteDir "mc/TeVatronFor3/Trip0412ScanTTBar")
   | p <- tripParamSet , num <- sets     ]
 
 
