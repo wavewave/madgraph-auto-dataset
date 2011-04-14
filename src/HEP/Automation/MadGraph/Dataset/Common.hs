@@ -24,7 +24,9 @@ rsetupLHC p matchtype ucuttype pgstype numofevt set = RS {
       NoMatch -> NoCut 
       MLM     -> DefCut
   , pythia  = case matchtype of 
-      NoMatch -> NoPYTHIA
+      NoMatch -> case pgstype of 
+        RunPGS -> RunPYTHIA
+        NoPGS  -> NoPYTHIA
       MLM     -> RunPYTHIA
   , usercut = ucuttype 
   , pgs     = pgstype
@@ -50,7 +52,9 @@ rsetupGen p matchtype ucuttype pgstype numofevt set = RS {
       NoMatch -> NoCut 
       MLM     -> DefCut
   , pythia  = case matchtype of 
-      NoMatch -> NoPYTHIA
+      NoMatch -> case pgstype of 
+        RunPGS -> RunPYTHIA
+        NoPGS  -> NoPYTHIA
       MLM     -> RunPYTHIA
   , usercut = ucuttype 
   , pgs     = pgstype
