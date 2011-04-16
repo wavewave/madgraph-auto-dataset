@@ -14,8 +14,10 @@ import HEP.Automation.MadGraph.Dataset.Common
 
 
 processSingleTZpSemiLep :: [Char]
-processSingleTZpSemiLep =  
-  "\ngenerate    P P > t zput  QED=99, (zput > t~ u, (t~ > b~ w-, w- > L- vl~ )), (t > b w+ , w+ > J J ) @1 \nadd process P P > t zput  QED=99, (zput > t~ u, (t~ > b~ w-, w- > J J    )), (t > b w+ , w+ > L+ vl ) @2 \nadd process P P > zptu t~ QED=99, (zptu > t u~, (t > b w+, w+ > L+ vl    )), (t~ > b~ w-, w- > J J ) @3 \nadd process P P > zptu t~ QED=99, (zptu > t u~, (t > b w+, w+ > J J      )), (t~ > b~ w-, w- > L- vl~ ) @4 \n"
+processSingleTZpSemiLep = "\ngenerate    P P > t zput  QED=99, (t > b w+ , w+ > J J ), (zput > t~ u, (t~ > b~ w-, w- > L- vl~ )) @1\nadd process P P > t zput  QED=99, (t > b w+ , w+ > L+ vl ), (zput > t~ u, (t~ > b~ w-, w- > J J    )) @2\nadd process P P > zptu t~ QED=99, (zptu > t u~, (t > b w+, w+ > L+ vl    )), (t~ > b~ w-, w- > J J ) @3\nadd process P P > zptu t~ QED=99, (zptu > t u~, (t > b w+, w+ > J J      )), (t~ > b~ w-, w- > L- vl~ ) @4\n"
+
+{- Wrong one.
+  "\ngenerate    P P > t zput  QED=99, (zput > t~ u, (t~ > b~ w-, w- > L- vl~ )), (t > b w+ , w+ > J J ) @1 \nadd process P P > t zput  QED=99, (zput > t~ u, (t~ > b~ w-, w- > J J    )), (t > b w+ , w+ > L+ vl ) @2 \nadd process P P > zptu t~ QED=99, (zptu > t u~, (t > b w+, w+ > L+ vl    )), (t~ > b~ w-, w- > J J ) @3 \nadd process P P > zptu t~ QED=99, (zptu > t u~, (t > b w+, w+ > J J      )), (t~ > b~ w-, w- > L- vl~ ) @4 \n" -}
 
 psetup_zp_SingleTZpSemiLep :: ProcessSetup ZpH
 psetup_zp_SingleTZpSemiLep = PS {  
