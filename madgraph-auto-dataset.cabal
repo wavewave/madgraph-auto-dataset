@@ -1,5 +1,5 @@
 Name:		madgraph-auto-dataset
-Version:	20110416.2
+Version:	20110419.1
 Synopsis:	madgraph-auto-dataset : dataset used for madgraph-auto event generation
 Description: 	datasets for madgraph-auto event generation in 1st quarter of 2011 
 License: 	GPL-3
@@ -20,6 +20,7 @@ Library
                  directory, process, tagsoup
   Exposed-Modules: 
                    HEP.Automation.MadGraph.Dataset.Common
+                   HEP.Automation.MadGraph.Dataset.Processes
                    HEP.Automation.MadGraph.Dataset.Set20110307set2
                    HEP.Automation.MadGraph.Dataset.Set20110307set2_1
                    HEP.Automation.MadGraph.Dataset.Set20110405set1
@@ -37,6 +38,7 @@ Library
                    HEP.Automation.MadGraph.Dataset.Set20110413set2
                    HEP.Automation.MadGraph.Dataset.Set20110413set3
                    HEP.Automation.MadGraph.Dataset.Set20110413set4
+                   HEP.Automation.MadGraph.Dataset.Set20110419set1
 
 --                   HEP.Automation.MadGraph.Dataset.Set20110224
 --                   HEP.Automation.MadGraph.Dataset.Set20110228
