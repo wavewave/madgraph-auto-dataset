@@ -29,7 +29,7 @@ psetup_axi_ttbar = PS {
 
 axiParamSet :: [ModelParam AxiGluon]
 axiParamSet = [ AxiGluonParam m 0.0 0.0 g g  
-                    | m <-[135.0, 140.0 .. 155.0] 
+                    | m <- [160.0, 165.0, 170.0]   -- [135.0, 140.0 .. 155.0] 
                     , g <- [0.20, 0.25 .. 1.40] ] 
           
 
