@@ -53,9 +53,9 @@ zptasklist ssetup csetup =
         , rgscale = 200.0 
         , match   = NoMatch
         , cut     = DefCut 
-        , pythia  = NoPYTHIA
+        , pythia  = RunPYTHIA
         , usercut = NoUserCutDef 
-        , pgs     = NoPGS
+        , pgs     = RunPGS
         , setnum  = num
         } )
        csetup  
