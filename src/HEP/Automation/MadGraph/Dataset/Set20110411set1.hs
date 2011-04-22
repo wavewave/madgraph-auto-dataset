@@ -29,8 +29,7 @@ psetup_zphfull_ttbar = PS {
 
 zpHFullParamSet :: [ModelParam ZpHFull]
 zpHFullParamSet = [ ZpHFullParam m g (0.28) 
-                    | -- m <-[135.0, 140.0 .. 155.0] 
-                      m <- [160.0, 165.0, 170.0 ]
+                    | m <- ([135.0, 140.0 .. 155.0] ++ [160.0, 165.0, 170.0 ])
                     , g <- [0.70, 0.75 .. 1.40] ] 
           
 

@@ -19,7 +19,7 @@ psetup_zp_ttbarsemilep = PS {
     mversion = MadGraph4
   , model = ZpH
   , process = preDefProcess TTBarSemiLep
-  , processBrief = "ttbarsemilep"  
+  , processBrief = "TTBarSemiLep"  
   , workname   = "419ZpHTTSemiLep"
   }
 
@@ -49,7 +49,7 @@ zptasklist ssetup csetup =
            , setnum  = num 
            })
        csetup  
-       (WebDAVRemoteDir "mc/TeVatronTau/Zp0419TTBarSemiLep")
+       (WebDAVRemoteDir "mc/ForCDF/Zp0419TTBarSemiLep")
   | p <- zpparamset 
   , num <- sets     ]
 
