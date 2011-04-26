@@ -44,19 +44,18 @@ sets = [1,2,3,4,5]
 zptasklist :: ScriptSetup -> ClusterSetup ZpH -> [WorkSetup ZpH]
 zptasklist ssetup csetup =  
   [ WS ssetup (psetup_zp_SingleTZpSemiLep) 
-       (RS { 
-          param   = p
-        , numevent = 10000
-        , machine = LHC7
-        , rgrun   = Fixed
-        , rgscale = 200.0 
-        , match   = NoMatch
-        , cut     = DefCut 
-        , pythia  = RunPYTHIA
-        , usercut = NoUserCutDef 
-        , pgs     = RunPGS
-        , setnum  = num
-        } )
+       RS { param   = p
+          , numevent = 10000
+          , machine = LHC7
+          , rgrun   = Fixed
+          , rgscale = 200.0 
+          , match   = NoMatch
+          , cut     = DefCut
+          , pythia  = RunPYTHIA
+          , usercut = NoUserCutDef
+          , pgs     = RunPGS
+          , setnum  = num
+       }
        csetup  
        (WebDAVRemoteDir "mc/LHC7New/Zp0412SingleTZpSemiLep")
   | p <- zpparamset 
