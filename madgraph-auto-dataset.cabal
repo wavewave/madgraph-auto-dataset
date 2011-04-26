@@ -43,6 +43,7 @@ Library
                    HEP.Automation.MadGraph.Dataset.Set20110421set1
                    HEP.Automation.MadGraph.Dataset.Set20110421set2
                    HEP.Automation.MadGraph.Dataset.Set20110425set1
+                   HEP.Automation.MadGraph.Dataset.Set20110425set2
 
 --                   HEP.Automation.MadGraph.Dataset.Set20110224
 --                   HEP.Automation.MadGraph.Dataset.Set20110228
