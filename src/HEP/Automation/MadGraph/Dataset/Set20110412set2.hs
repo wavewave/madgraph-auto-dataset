@@ -5,7 +5,6 @@ import HEP.Storage.WebDAV
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Model.Octet
@@ -39,7 +38,7 @@ psetuplist = [ psetup_octet_ttbar ]
 sets :: [Int]
 sets = [1]
 
-octettasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup Octet]
+octettasklist :: ScriptSetup -> ClusterSetup Octet -> [WorkSetup Octet]
 octettasklist ssetup csetup =  
   [ WS ssetup (psetup_octet_ttbar) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 10000 num) 
@@ -48,7 +47,7 @@ octettasklist ssetup csetup =
   | p <- octetParamSet , num <- sets     ]
 
 
-totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup Octet]
+totaltasklist :: ScriptSetup -> ClusterSetup Octet -> [WorkSetup Octet]
 totaltasklist = octettasklist 
 
 

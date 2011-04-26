@@ -5,7 +5,6 @@ import HEP.Storage.WebDAV
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Model.Six
@@ -39,7 +38,7 @@ psetuplist = [ psetup_six_ttbar ]
 sets :: [Int]
 sets = [1]
 
-sixtasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup Six]
+sixtasklist :: ScriptSetup -> ClusterSetup Six -> [WorkSetup Six]
 sixtasklist ssetup csetup =  
   [ WS ssetup (psetup_six_ttbar) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 10000 num) 
@@ -48,7 +47,7 @@ sixtasklist ssetup csetup =
   | p <- sixParamSet , num <- sets     ]
 
 
-totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup Six]
+totaltasklist :: ScriptSetup -> ClusterSetup Six -> [WorkSetup Six]
 totaltasklist = sixtasklist 
 
 

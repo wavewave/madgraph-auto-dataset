@@ -5,7 +5,6 @@ import HEP.Storage.WebDAV
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Model.ZpHFull
@@ -37,7 +36,7 @@ psetuplist = [ psetup_zphfull_TTBarSemiLep ]
 sets :: [Int]
 sets = [1]
 
-zptasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpHFull]
+zptasklist :: ScriptSetup -> ClusterSetup ZpHFull -> [WorkSetup ZpHFull]
 zptasklist ssetup csetup =  
   [ WS ssetup (psetup_zphfull_TTBarSemiLep) 
        (RS { param = p
@@ -57,7 +56,7 @@ zptasklist ssetup csetup =
   | p <- zpHFullParamSet , num <- sets     ]
 
 
-totaltasklistEvery :: Int -> Int -> ScriptSetup -> ClusterSetup -> [WorkSetup ZpHFull]
+totaltasklistEvery :: Int -> Int -> ScriptSetup -> ClusterSetup ZpHFull -> [WorkSetup ZpHFull]
 totaltasklistEvery n r ssetup csetup = 
   let lst = zip [1..] (zptasklist ssetup csetup)
   in  map snd . filter (\(x,_)-> x `mod` n == r) $ lst 

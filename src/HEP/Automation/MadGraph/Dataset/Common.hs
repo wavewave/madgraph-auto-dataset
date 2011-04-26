@@ -3,7 +3,6 @@ module HEP.Automation.MadGraph.Dataset.Common where
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 rsetupLHC :: (Model a) => ModelParam a 

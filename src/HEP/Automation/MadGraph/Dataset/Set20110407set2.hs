@@ -5,7 +5,6 @@ import HEP.Storage.WebDAV
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Model.ZpHFull
@@ -39,7 +38,7 @@ psetuplist = [ psetup_zphfull_TopZpDecay ]
 sets :: [Int]
 sets = [1]
 
-zptasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpHFull]
+zptasklist :: ScriptSetup -> ClusterSetup ZpHFull -> [WorkSetup ZpHFull]
 zptasklist ssetup csetup =  
   [ WS ssetup (psetup_zphfull_TopZpDecay) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
@@ -48,7 +47,7 @@ zptasklist ssetup csetup =
   | p <- zpHFullParamSet , num <- sets     ]
 
 
-totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpHFull]
+totaltasklist :: ScriptSetup -> ClusterSetup ZpHFull -> [WorkSetup ZpHFull]
 totaltasklist = zptasklist 
 
 

@@ -5,7 +5,6 @@ import HEP.Storage.WebDAV
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Model.WpZpFull
@@ -38,7 +37,7 @@ psetuplist = [ psetup_wpzpfull_bb ]
 sets :: [Int]
 sets = [1]
 
-wpzptasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup WpZpFull]
+wpzptasklist :: ScriptSetup -> ClusterSetup WpZpFull -> [WorkSetup WpZpFull]
 wpzptasklist ssetup csetup =  
   [ WS ssetup (psetup_wpzpfull_bb) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 20000 num) 
@@ -46,7 +45,7 @@ wpzptasklist ssetup csetup =
        (WebDAVRemoteDir undefined)
   | p <- wpzpparamset , num <- sets     ]
 
-wpzptasklist2 :: ScriptSetup -> ClusterSetup -> [WorkSetup WpZpFull]
+wpzptasklist2 :: ScriptSetup -> ClusterSetup WpZpFull -> [WorkSetup WpZpFull]
 wpzptasklist2 ssetup csetup =  
   [ WS ssetup (psetup_wpzpfull_bb) 
        (rsetupLHC p NoMatch NoUserCutDef NoPGS 20000 num) 
@@ -55,7 +54,7 @@ wpzptasklist2 ssetup csetup =
   | p <- wpzpparamset , num <- sets     ]
 
 
-totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup WpZpFull]
+totaltasklist :: ScriptSetup -> ClusterSetup WpZpFull -> [WorkSetup WpZpFull]
 totaltasklist ssetup csetup = 
   wpzptasklist ssetup csetup ++ wpzptasklist2 ssetup csetup
 

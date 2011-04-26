@@ -5,7 +5,6 @@ import HEP.Storage.WebDAV
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Dataset.Common
@@ -34,7 +33,7 @@ psetup_zp_ttbar01j = PS {
   , workname   = "307ZpH1J"
   }
 
-my_csetup :: ClusterSetup
+my_csetup :: ClusterSetup ZpH
 my_csetup = CS { cluster = Parallel 3 }
 
 zpparamset :: [ModelParam ZpH]
@@ -47,7 +46,7 @@ psetuplist = [ psetup_zp_ttbar01j ]
 sets :: [Int]
 sets = [1..10]
 
-zptasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpH]
+zptasklist :: ScriptSetup -> ClusterSetup ZpH -> [WorkSetup ZpH]
 zptasklist ssetup csetup =  
   [ WS ssetup (psetup_zp_ttbar01j) 
        (rsetupGen p MLM (UserCutDef ucut) RunPGS 100000 num) 
@@ -56,7 +55,7 @@ zptasklist ssetup csetup =
      | p <- zpparamset 
      , num <- sets     ]
 
-totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup ZpH]
+totaltasklist :: ScriptSetup -> ClusterSetup ZpH -> [WorkSetup ZpH]
 totaltasklist = zptasklist 
 
 

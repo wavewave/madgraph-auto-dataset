@@ -5,7 +5,6 @@ import HEP.Storage.WebDAV
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Model.Singlet
@@ -39,7 +38,7 @@ psetuplist = [ psetup_singlet_ttbar ]
 sets :: [Int]
 sets = [1]
 
-singlettasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup Singlet]
+singlettasklist :: ScriptSetup -> ClusterSetup Singlet -> [WorkSetup Singlet]
 singlettasklist ssetup csetup =  
   [ WS ssetup (psetup_singlet_ttbar) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 10000 num) 
@@ -48,7 +47,7 @@ singlettasklist ssetup csetup =
   | p <- singletParamSet , num <- sets     ]
 
 
-totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup Singlet]
+totaltasklist :: ScriptSetup -> ClusterSetup Singlet -> [WorkSetup Singlet]
 totaltasklist = singlettasklist 
 
 

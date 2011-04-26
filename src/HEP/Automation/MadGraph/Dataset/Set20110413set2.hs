@@ -5,7 +5,6 @@ import HEP.Storage.WebDAV
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Model.AxiGluon
@@ -40,7 +39,7 @@ psetuplist = [ psetup_axi_ttbar ]
 sets :: [Int]
 sets = [1]
 
-axitasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup AxiGluon]
+axitasklist :: ScriptSetup -> ClusterSetup AxiGluon -> [WorkSetup AxiGluon]
 axitasklist ssetup csetup =  
   [ WS ssetup (psetup_axi_ttbar) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 10000 num) 
@@ -49,7 +48,7 @@ axitasklist ssetup csetup =
   | p <- axiParamSet , num <- sets     ]
 
 
-totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup AxiGluon]
+totaltasklist :: ScriptSetup -> ClusterSetup AxiGluon -> [WorkSetup AxiGluon]
 totaltasklist = axitasklist 
 
           

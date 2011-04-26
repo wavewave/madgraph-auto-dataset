@@ -5,7 +5,6 @@ import HEP.Storage.WebDAV
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.Cluster
 import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Model.Trip
@@ -39,7 +38,7 @@ psetuplist = [ psetup_trip_ttbar ]
 sets :: [Int]
 sets = [1]
 
-triptasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup Trip]
+triptasklist :: ScriptSetup -> ClusterSetup Trip -> [WorkSetup Trip]
 triptasklist ssetup csetup =  
   [ WS ssetup (psetup_trip_ttbar) 
        (rsetupGen p NoMatch NoUserCutDef NoPGS 10000 num) 
@@ -48,7 +47,7 @@ triptasklist ssetup csetup =
   | p <- tripParamSet , num <- sets     ]
 
 
-totaltasklist :: ScriptSetup -> ClusterSetup -> [WorkSetup Trip]
+totaltasklist :: ScriptSetup -> ClusterSetup Trip -> [WorkSetup Trip]
 totaltasklist = triptasklist 
 
 
