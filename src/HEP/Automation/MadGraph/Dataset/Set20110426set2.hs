@@ -17,11 +17,11 @@ import Control.Applicative
 
 import qualified Data.ByteString as B
 
-psetup_zphfull_SingleTZpSemiLep :: ProcessSetup ZpHFull
-psetup_zphfull_SingleTZpSemiLep = PS {  
+psetup_zphfull_SingleTZpLep :: ProcessSetup ZpHFull
+psetup_zphfull_SingleTZpLep = PS {  
     mversion = MadGraph4
   , model = ZpHFull
-  , process = preDefProcess SingleTZpSemiLep
+  , process = preDefProcess SingleTZpLep
   , processBrief = "SingleTZpSemiLep" 
   , workname   = "426ZpH_SingleTZpSemiLep"
   }
