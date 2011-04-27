@@ -1,6 +1,6 @@
 module HEP.Automation.MadGraph.Dataset.Processes where
 
-data Process = TTBar | TTBar0or1J | SingleTZpSemiLep | TTBarSemiZp | TZpLep | TTBarSemiZpNotFull | TTBarSemiLep
+data Process = TTBar | TTBar0or1J | SingleTZpSemiLep | TTBarSemiZp | TZpLep | TTBarSemiZpNotFull | TTBarSemiLep | SingleTZpJDecay
              deriving (Show, Eq)
 
 
@@ -12,6 +12,7 @@ preDefProcess TTBarSemiZp = "\ngenerate P P > t t~ QED=99, ( t > b w+, w+ > l+ v
 preDefProcess TZpLep      = "\ngenerate P P > t zput QED=99, zput > b~ d, ( t > b w+, w+ > l+ vl ) @1 \nadd process P P > t~ zptu QED=99, (t~ > b~ w-, w- > l- vl~ ), zptu > b d~ @2 \n"
 preDefProcess TTBarSemiZpNotFull = "\ngenerate P P > t t~ QED=99, t > b w+, t~ > u~ zput @1 \nadd process P P > t t~ QED=99, t > u zptu, t~ > b~ w- @2 \n"
 preDefProcess TTBarSemiLep = "\ngenerate    P P > t t~  QED=99, (t > b w+ , w+ > J J ), (t~ > b~ w-, w- > L- vl~ ) @1\nadd process P P > t t~  QED=99, (t > b w+ , w+ > L+ vl ), (t~ > b~ w-, w- > J J    ) @2\n"
+preDefProcess SingleTZpJDecay = "\ngenerate P P > t zput J $ t~ , ( t > w+ b, w+ > l+ vl), zput > b~ d @1 \nadd process P P > t~ zptu J $ t , (t~ > w- b~, w- > l- vl~), zptu > b d~ @2\n" 
 
 
 
