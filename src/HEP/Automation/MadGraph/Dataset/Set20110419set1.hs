@@ -30,13 +30,13 @@ psetuplist :: [ProcessSetup ZpH]
 psetuplist = [ psetup_zp_ttbarsemilep ]
 
 sets :: [Int]
-sets = [ 1..10 ]
+sets = [ 101..110 ]
 
 zptasklist :: ScriptSetup -> ClusterSetup ZpH -> [WorkSetup ZpH]
 zptasklist ssetup csetup =  
   [ WS ssetup (psetup_zp_ttbarsemilep) 
        (RS { param = p
-           , numevent = 10000
+           , numevent = 30000
            , machine = TeVatron 
            , rgrun   = Fixed
            , rgscale = 200.0
