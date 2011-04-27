@@ -54,7 +54,7 @@ zptasklist ssetup csetup =
            , setnum  = num 
            })
        csetup  
-       (WebDAVRemoteDir "mc/TeVatronFor3/ZpHFull0421ScanTTBarSemiLep")
+       (WebDAVRemoteDir "mc/TeVatronFor3/ZpHFull0426ScanSingleTZpSemiLep")
   | p <- zpHFullParamSet , num <- sets     ]
 
 totaltasklistEvery :: Int -> Int -> ScriptSetup -> ClusterSetup ZpHFull -> [WorkSetup ZpHFull]
