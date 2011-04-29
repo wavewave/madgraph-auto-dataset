@@ -34,7 +34,7 @@ psetuplist :: [ProcessSetup ZpHFull]
 psetuplist = [ psetup_zphfull_SingleTZpJDecay ]
 
 sets :: [Int]
-sets = [101]
+sets = [102,103..110] -- [101]
 
 zptasklist :: ScriptSetup -> ClusterSetup ZpHFull -> [WorkSetup ZpHFull]
 zptasklist ssetup csetup =  

@@ -34,7 +34,7 @@ psetuplist :: [ProcessSetup ZpHFull]
 psetuplist = [ psetup_zphfull_TTBarSemiLep ]
 
 sets :: [Int]
-sets = [101]
+sets = [102,103..200]  -- [101]
 
 zptasklist :: ScriptSetup -> ClusterSetup ZpHFull -> [WorkSetup ZpHFull]
 zptasklist ssetup csetup =  
