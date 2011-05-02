@@ -1,6 +1,6 @@
 module HEP.Automation.MadGraph.Dataset.Processes where
 
-data Process = TTBar | TTBar0or1J | SingleTZpSemiLep | TTBarSemiZp | TZpLep | TTBarSemiZpNotFull | TTBarSemiLep | SingleTZpJDecay
+data Process = TTBar | TTBar0or1J | SingleTZpSemiLep | TTBarSemiZp | TZpLep | TTBarSemiZpNotFull | TTBarSemiLep | SingleTZpJDecay | UUDijet | EEDijet 
              deriving (Show, Eq)
 
 
@@ -13,7 +13,8 @@ preDefProcess TZpLep      = "\ngenerate P P > t zput QED=99, zput > b~ d, ( t > 
 preDefProcess TTBarSemiZpNotFull = "\ngenerate P P > t t~ QED=99, t > b w+, t~ > u~ zput @1 \nadd process P P > t t~ QED=99, t > u zptu, t~ > b~ w- @2 \n"
 preDefProcess TTBarSemiLep = "\ngenerate    P P > t t~  QED=99, (t > b w+ , w+ > J J ), (t~ > b~ w-, w- > L- vl~ ) @1\nadd process P P > t t~  QED=99, (t > b w+ , w+ > L+ vl ), (t~ > b~ w-, w- > J J    ) @2\n"
 preDefProcess SingleTZpJDecay = "\ngenerate P P > t zput J $ t~ , ( t > w+ b, w+ > l+ vl), zput > b~ d @1 \nadd process P P > t~ zptu J $ t , (t~ > w- b~, w- > l- vl~), zptu > b d~ @2\n" 
-
+preDefProcess UUDijet = "\ngenerate u u~ > u u~ QED=0\n"
+preDefProcess EEDijet = "\ngenerate e+ e- > u u~ \n"
 
 
 
