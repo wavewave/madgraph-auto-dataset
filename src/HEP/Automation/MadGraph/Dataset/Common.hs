@@ -59,3 +59,11 @@ rsetupGen p matchtype ucuttype pgstype numofevt set = RS {
   , pgs     = pgstype
   , setnum  = set
 }
+
+tasklistEvery :: (Model a) => 
+                 (ScriptSetup -> ClusterSetup a -> [WorkSetup a] ) 
+                 -> Int -> Int -> ScriptSetup -> ClusterSetup a -> [WorkSetup a]
+tasklistEvery tlistf n r ssetup csetup = 
+  let lst = zip [1..] (tlistf ssetup csetup)
+  in  map snd . filter (\(x,_)-> x `mod` n == r) $ lst 
+
