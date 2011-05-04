@@ -50,7 +50,7 @@ axitasklist ssetup csetup =
            , cut     = DefCut 
            , pythia  = RunPYTHIA
            , usercut = NoUserCutDef
-           , pgs     = RunPGS 
+           , pgs     = RunPGSNoTau
            , setnum  = num 
            })
        csetup  
