@@ -1,6 +1,6 @@
 module HEP.Automation.MadGraph.Dataset.Processes where
 
-data Process = TTBar | TTBar0or1J | SingleTZpSemiLep | TTBarSemiZp | TZpLep | TTBarSemiZpNotFull | TTBarSemiLep | SingleTZpJDecay | UUDijet | EEDijet 
+data Process = TTBar | TTBar0or1J | SingleTZpSemiLep | TTBarSemiZp | TZpLep | TTBarSemiZpNotFull | TTBarSemiLep | SingleTZpJDecay | UUDijet | EEDijet | WBZprimeDecay
              deriving (Show, Eq)
 
 
@@ -15,8 +15,7 @@ preDefProcess TTBarSemiLep = "\ngenerate    P P > t t~  QED=99, (t > b w+ , w+ >
 preDefProcess SingleTZpJDecay = "\ngenerate P P > t zput J $ t~ , ( t > w+ b, w+ > l+ vl), zput > b~ d @1 \nadd process P P > t~ zptu J $ t , (t~ > w- b~, w- > l- vl~), zptu > b d~ @2\n" 
 preDefProcess UUDijet = "\ngenerate u u~ > u u~ QED=0\n"
 preDefProcess EEDijet = "\ngenerate e+ e- > u u~ \n"
-
-
+preDefProcess WBZprimeDecay = "\ngenerate p p > w+ b zput $ t / d d~ , w+ > l+ vl , zput > d b~     QED=99  @1 \nadd process p p > w- b~ zptu $ t~  / d d~ ,  w- > l- vl~  ,  zptu > d~ b  QED=99 @2 \n"
 
 
 
