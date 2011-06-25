@@ -1,5 +1,5 @@
 Name:		madgraph-auto-dataset
-Version:	20110519.1
+Version:	20110621.1
 Synopsis:	madgraph-auto-dataset : dataset used for madgraph-auto event generation
 Description: 	datasets for madgraph-auto event generation in 1st quarter of 2011 
 License: 	GPL-3
@@ -17,57 +17,63 @@ Library
                  madgraph-auto > 0.3.7, madgraph-auto-model > 0.1.4.0, 
                  webdav-manager > 0.0.1, 
                  MSSMType > 0.0.1 , bytestring,
-                 directory, process, tagsoup
+                 directory, process, tagsoup, 
+                 jobqueue-common
   Exposed-Modules: 
                    HEP.Automation.MadGraph.Dataset.Common
                    HEP.Automation.MadGraph.Dataset.Processes
-                   HEP.Automation.MadGraph.Dataset.Set20110307set2
-                   HEP.Automation.MadGraph.Dataset.Set20110307set2_1
-                   HEP.Automation.MadGraph.Dataset.Set20110405set1
-                   HEP.Automation.MadGraph.Dataset.Set20110407set2
-                   HEP.Automation.MadGraph.Dataset.Set20110411set1
-                   HEP.Automation.MadGraph.Dataset.Set20110411set2
-                   HEP.Automation.MadGraph.Dataset.Set20110411set3
-                   HEP.Automation.MadGraph.Dataset.Set20110411set4
-                   HEP.Automation.MadGraph.Dataset.Set20110411set5
-                   HEP.Automation.MadGraph.Dataset.Set20110412set1
-                   HEP.Automation.MadGraph.Dataset.Set20110412set2
-                   HEP.Automation.MadGraph.Dataset.Set20110412set3
-                   HEP.Automation.MadGraph.Dataset.Set20110412set4
-                   HEP.Automation.MadGraph.Dataset.Set20110413set1
-                   HEP.Automation.MadGraph.Dataset.Set20110413set2
-                   HEP.Automation.MadGraph.Dataset.Set20110413set3
-                   HEP.Automation.MadGraph.Dataset.Set20110413set4
-                   HEP.Automation.MadGraph.Dataset.Set20110419set1
-                   HEP.Automation.MadGraph.Dataset.Set20110420set1
-                   HEP.Automation.MadGraph.Dataset.Set20110421set1
-                   HEP.Automation.MadGraph.Dataset.Set20110421set2
-                   HEP.Automation.MadGraph.Dataset.Set20110425set1
-                   HEP.Automation.MadGraph.Dataset.Set20110425set2
-                   HEP.Automation.MadGraph.Dataset.Set20110426set1
-                   HEP.Automation.MadGraph.Dataset.Set20110427set1
-                   HEP.Automation.MadGraph.Dataset.Set20110428set1
-                   HEP.Automation.MadGraph.Dataset.Set20110428set2
-                   HEP.Automation.MadGraph.Dataset.Set20110428set3
-                   HEP.Automation.MadGraph.Dataset.Set20110428set4
-                   HEP.Automation.MadGraph.Dataset.Set20110429set1
-                   HEP.Automation.MadGraph.Dataset.Set20110502set1
-                   HEP.Automation.MadGraph.Dataset.Set20110502set2
-                   HEP.Automation.MadGraph.Dataset.Set20110502set3
-                   HEP.Automation.MadGraph.Dataset.Set20110502set4
-                   HEP.Automation.MadGraph.Dataset.Set20110504set1
-                   HEP.Automation.MadGraph.Dataset.Set20110516set2
-                   HEP.Automation.MadGraph.Dataset.Set20110516set3
-                   HEP.Automation.MadGraph.Dataset.Set20110516set4
-                   HEP.Automation.MadGraph.Dataset.Set20110516set5
-                   HEP.Automation.MadGraph.Dataset.Set20110519set1
+                   HEP.Automation.MadGraph.Dataset.Set20110621set1
+
+
+
+-- second 
+--                   HEP.Automation.MadGraph.Dataset.Set20110307set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110307set2_1
+--                   HEP.Automation.MadGraph.Dataset.Set20110405set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110407set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110411set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110411set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110411set3
+--                   HEP.Automation.MadGraph.Dataset.Set20110411set4
+--                   HEP.Automation.MadGraph.Dataset.Set20110411set5
+--                   HEP.Automation.MadGraph.Dataset.Set20110412set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110412set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110412set3
+--                   HEP.Automation.MadGraph.Dataset.Set20110412set4
+--                   HEP.Automation.MadGraph.Dataset.Set20110413set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110413set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110413set3
+--                   HEP.Automation.MadGraph.Dataset.Set20110413set4
+--                   HEP.Automation.MadGraph.Dataset.Set20110419set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110420set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110421set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110421set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110425set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110425set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110426set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110427set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110428set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110428set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110428set3
+--                   HEP.Automation.MadGraph.Dataset.Set20110428set4
+--                   HEP.Automation.MadGraph.Dataset.Set20110429set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110502set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110502set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110502set3
+--                   HEP.Automation.MadGraph.Dataset.Set20110502set4
+--                   HEP.Automation.MadGraph.Dataset.Set20110504set1
+--                   HEP.Automation.MadGraph.Dataset.Set20110516set2
+--                   HEP.Automation.MadGraph.Dataset.Set20110516set3
+--                   HEP.Automation.MadGraph.Dataset.Set20110516set4
+--                   HEP.Automation.MadGraph.Dataset.Set20110516set5
+--                   HEP.Automation.MadGraph.Dataset.Set20110519set1
+
+--- first 
 
 --                   HEP.Automation.MadGraph.Dataset.Set20110504set2
 --                   HEP.Automation.MadGraph.Dataset.Set20110504set3
 --                   HEP.Automation.MadGraph.Dataset.Set20110504set1
-
 --                   HEP.Automation.MadGraph.Dataset.Set20110426set2
-
 --                   HEP.Automation.MadGraph.Dataset.Set20110224
 --                   HEP.Automation.MadGraph.Dataset.Set20110228
 --                   HEP.Automation.MadGraph.Dataset.Set20110301
@@ -79,7 +85,6 @@ Library
 --                   HEP.Automation.MadGraph.Dataset.Set20110304set1
 --                   HEP.Automation.MadGraph.Dataset.Set20110304set2
 --                   HEP.Automation.MadGraph.Dataset.Set20110307set1
-
 --                   HEP.Automation.MadGraph.Dataset.Set20110308set1
 --                   HEP.Automation.MadGraph.Dataset.Set20110308set2
 --                   HEP.Automation.MadGraph.Dataset.Set20110311set1
@@ -90,7 +95,7 @@ Library
 --                   HEP.Automation.MadGraph.Dataset.Set20110315set3
 --                   HEP.Automation.MadGraph.Dataset.Set20110315set4
 --                   HEP.Automation.MadGraph.Dataset.Set20110315set5
---                  HEP.Automation.MadGraph.Dataset.Set20110315set6
+--                   HEP.Automation.MadGraph.Dataset.Set20110315set6
 --                   HEP.Automation.MadGraph.Dataset.Set20110315set7
 --                   HEP.Automation.MadGraph.Dataset.Set20110315set8
 --                   HEP.Automation.MadGraph.Dataset.Set20110315set9
