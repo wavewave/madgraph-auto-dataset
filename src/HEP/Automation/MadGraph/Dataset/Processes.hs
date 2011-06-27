@@ -16,7 +16,7 @@ preDefProcess SingleTZpJDecay = "\ngenerate P P > t zput J $ t~ , ( t > w+ b, w+
 preDefProcess UUDijet = "\ngenerate u u~ > u u~ QED=0\n"
 preDefProcess EEDijet = "\ngenerate e+ e- > u u~ \n"
 preDefProcess WBZprimeDecay = "\ngenerate p p > w+ b zput $ t / d d~ , w+ > l+ vl , zput > d b~     QED=99  @1 \nadd process p p > w- b~ zptu $ t~  / d d~ ,  w- > l- vl~  ,  zptu > d~ b  QED=99 @2 \n"
-preDefProcess WGDijet = "\ngenerate P P > w+ gg QED=99, w+ > l+ vl, gg > J J @1 \nadd process P P > w- gg QED=99, w- > l- vl, gg > J J @2 \n"
+preDefProcess WGDijet = "\ngenerate P P > w+ gg QED=99, w+ > l+ vl, gg > J J @1 \nadd process P P > w- gg QED=99, w- > l- vl~, gg > J J @2 \n"
 
 
 
