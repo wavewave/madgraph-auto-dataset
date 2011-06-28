@@ -40,7 +40,7 @@ eventsets :: [EventSet]
 eventsets =  
   [ EventSet  (psetup_axi_WGDijet) 
               (RS { param = p
-                  , numevent = 10000
+                  , numevent = 100
                   , machine = TeVatron 
                   , rgrun   = Fixed
                   , rgscale = 200.0
@@ -54,4 +54,4 @@ eventsets =
    | p <- axiParamSet , num <- sets     ]
 
 webdavdir :: WebDAVRemoteDir
-webdavdir = WebDAVRemoteDir "/mc/test/testjqueue"
+webdavdir = WebDAVRemoteDir "test/testjqueue"
