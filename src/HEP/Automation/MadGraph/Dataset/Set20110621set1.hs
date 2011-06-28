@@ -49,6 +49,7 @@ eventsets =
                   , pythia  = RunPYTHIA
                   , usercut = NoUserCutDef
                   , pgs     = RunPGSNoTau
+                  , jetalgo = KTJet
                   , setnum  = num 
                   })
    | p <- axiParamSet , num <- sets     ]
