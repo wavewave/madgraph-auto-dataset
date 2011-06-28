@@ -1,6 +1,6 @@
 module HEP.Automation.MadGraph.Dataset.Set20110621set1 where
 
-import HEP.Storage.WebDAV
+import HEP.Storage.WebDAV.Type
 
 import HEP.Automation.MadGraph.Model
 import HEP.Automation.MadGraph.Machine
@@ -9,12 +9,9 @@ import HEP.Automation.MadGraph.SetupType
 
 import HEP.Automation.MadGraph.Model.AxiGluon
 
-import HEP.Automation.MadGraph.Dataset.Common
 import HEP.Automation.MadGraph.Dataset.Processes
 
 import HEP.Automation.JobQueue.JobType
-
-import qualified Data.ByteString as B
 
 psetup_axi_WGDijet :: ProcessSetup AxiGluon
 psetup_axi_WGDijet = PS {  
@@ -56,4 +53,5 @@ eventsets =
                   })
    | p <- axiParamSet , num <- sets     ]
 
-
+webdavdir :: WebDAVRemoteDir
+webdavdir = WebDAVRemoteDir "/mc/test/testjqueue"
