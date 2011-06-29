@@ -55,7 +55,7 @@ eventsets =
                   , cut     = DefCut 
                   , pythia  = RunPYTHIA
                   , usercut = UserCutDef ucut
-                  , pgs     = RunPGSNoTau
+                  , pgs     = RunPGS
                   , jetalgo = KTJet
                   , setnum  = num 
                   })
