@@ -57,6 +57,7 @@ eventsets =
                   , usercut = UserCutDef ucut
                   , pgs     = RunPGS
                   , jetalgo = KTJet
+                  , uploadhep = NoUploadHEP
                   , setnum  = num 
                   })
    | p <- axiParamSet , num <- sets     ]

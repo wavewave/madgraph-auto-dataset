@@ -31,7 +31,7 @@ psetuplist :: [ProcessSetup ZpH ]
 psetuplist = [ psetup_zph_TTBar0or1J ]
 
 sets :: [Int]
-sets = [1..50]
+sets = [6,16,17,19,27,30,45] -- [1..50]
 
 ucut :: UserCut 
 ucut = UserCut { 
