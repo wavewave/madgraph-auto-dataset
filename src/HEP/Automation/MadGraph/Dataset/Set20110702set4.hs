@@ -47,7 +47,7 @@ eventsets =
                   , pythia  = RunPYTHIA
                   , usercut = NoUserCutDef 
                   , pgs     = NoPGS
-                  , jetalgo = KTJet
+                  , jetalgo = KTJet 0.5
                   , uploadhep = UploadHEP
                   , setnum  = num 
                   })
