@@ -3,15 +3,15 @@ module HEP.Automation.MadGraph.Dataset.Set20110630set1 where
 import HEP.Storage.WebDAV.Type
 
 import HEP.Automation.MadGraph.Model
-import HEP.Automation.MadGraph.Machine
+import HEP.Automation.MadGraph.Machine.V2
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.SetupType
+import HEP.Automation.MadGraph.SetupType.V2
 
 import HEP.Automation.MadGraph.Model.ZpH
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
-import HEP.Automation.JobQueue.JobType
+import HEP.Automation.JobQueue.JobType.V2
 
 psetup_zph_TTBar0or1J :: ProcessSetup ZpH
 psetup_zph_TTBar0or1J = PS {  

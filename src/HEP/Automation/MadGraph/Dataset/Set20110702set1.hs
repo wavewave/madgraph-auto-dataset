@@ -3,15 +3,15 @@ module HEP.Automation.MadGraph.Dataset.Set20110702set1 where
 import HEP.Storage.WebDAV.Type
 
 import HEP.Automation.MadGraph.Model
-import HEP.Automation.MadGraph.Machine
+import HEP.Automation.MadGraph.Machine.V2
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.SetupType
+import HEP.Automation.MadGraph.SetupType.V2
 
 import HEP.Automation.MadGraph.Model.SM
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
-import HEP.Automation.JobQueue.JobType 
+import HEP.Automation.JobQueue.JobType.V2
 
 import qualified Data.ByteString as B
 

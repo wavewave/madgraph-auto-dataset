@@ -1,9 +1,9 @@
 module HEP.Automation.MadGraph.Dataset.Common where
 
 import HEP.Automation.MadGraph.Model
-import HEP.Automation.MadGraph.Machine
+import HEP.Automation.MadGraph.Machine.V1
 import HEP.Automation.MadGraph.UserCut
-import HEP.Automation.MadGraph.SetupType
+import HEP.Automation.MadGraph.SetupType.V1
 
 rsetupLHC :: (Model a) => ModelParam a 
              -> MatchType 
