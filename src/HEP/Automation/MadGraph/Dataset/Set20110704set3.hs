@@ -56,7 +56,7 @@ eventsets =
                  , uploadhep = NoUploadHEP
                  , setnum  = num
                  })
-  | energy <- [ 100,200..1500], num <- sets ]
+  | num <- sets ]
 
 
 webdavdir :: WebDAVRemoteDir 
