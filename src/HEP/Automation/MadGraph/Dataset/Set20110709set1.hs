@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110706set2 where
+module HEP.Automation.MadGraph.Dataset.Set20110709set1 where
 
 import HEP.Storage.WebDAV.Type
 
@@ -19,13 +19,14 @@ psetup_zph_TTBar0or1J = PS {
   , model = ZpH
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
-  , workname   = "628ZpH_TTBar0or1J"
+  , workname   = "707_ZpH_TTBar0or1J_TEV"
   }
 
 zphParamSet :: [ModelParam ZpH]
 zphParamSet = [ ZpHParam { massZp = m,  
-                           gRZp = g } | m <- [300,500,700,900], g <- [1,2,3,4,5] ]
-
+                           gRZp = g } | m <- [200,300..1000], 
+                                        g <- [1,2,3,4,5] ] 
+--m <- [300,500,700,900], g <- [1,2,3,4,5] ]  
 -- m <- [200,400,600,800,1000], g <- [1,2,3,4,5] ]
               
 
@@ -50,7 +51,7 @@ eventsets =
   [ EventSet  (psetup_zph_TTBar0or1J) 
               (RS { param = p
                   , numevent = 100000
-                  , machine = LHC7 ATLAS 
+                  , machine = TeVatron 
                   , rgrun   = Fixed
                   , rgscale = 200.0
                   , match   = MLM
@@ -58,11 +59,11 @@ eventsets =
                   , pythia  = RunPYTHIA
                   , usercut = UserCutDef ucut
                   , pgs     = RunPGS
-                  , jetalgo = AntiKTJet 0.4
+                  , jetalgo = Cone 0.4
                   , uploadhep = NoUploadHEP
                   , setnum  = num 
                   })
    | p <- zphParamSet , num <- sets     ]
 
 webdavdir :: WebDAVRemoteDir
-webdavdir = WebDAVRemoteDir "paper3/ttbarLHCscan"
+webdavdir = WebDAVRemoteDir "paper3/ttbarTEVscan"

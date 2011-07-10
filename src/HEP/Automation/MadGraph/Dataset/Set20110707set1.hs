@@ -24,7 +24,9 @@ psetup_zph_TTBar0or1J = PS {
 
 zphParamSet :: [ModelParam ZpH]
 zphParamSet = [ ZpHParam { massZp = m,  
-                           gRZp = g } | m <- [200,400,600,800,1000], g <- [1,2,3,4,5] ]
+                           gRZp = g } | m <- [200,400,600,800,1000],  g <- [1,2,3,4,5] ]  
+-- m <- [200,300..1000],
+--  g <- [1,2,3,4,5] ]
               
 
 psetuplist :: [ProcessSetup ZpH ]
