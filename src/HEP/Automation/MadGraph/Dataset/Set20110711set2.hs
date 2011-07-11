@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110710set3 where
+module HEP.Automation.MadGraph.Dataset.Set20110711set2 where
 
 import HEP.Storage.WebDAV.Type
 
@@ -18,13 +18,13 @@ processSetup = PS {
     model = C1S
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
-  , workname   = "710_C1S_TTBar0or1J_TEV"
+  , workname   = "710_C1S_TTBar0or1J_LHC"
   }
 
 paramSet :: [ModelParam C1S]
 paramSet = [ C1SParam { mnp = m,  
                         gnpR = g,
-                        gnpL = 0 } | m <- [600], g <- [1] ]
+                        gnpL = 0 } | m <- [200,300..1000], g <- [1,2,3,4,5] ]
 
 
 sets :: [Int]
@@ -44,20 +44,20 @@ eventsets :: [EventSet]
 eventsets =  
   [ EventSet  processSetup 
               (RS { param = p
-                  , numevent = 1000
-                  , machine = TeVatron 
+                  , numevent = 10000
+                  , machine = LHC7 ATLAS 
                   , rgrun   = Fixed
                   , rgscale = 200.0
                   , match   = MLM
                   , cut     = DefCut 
                   , pythia  = RunPYTHIA
-                  , usercut = NoUserCutDef -- UserCutDef ucut
+                  , usercut = NoUserCutDef -- UserCutDef ucut 
                   , pgs     = RunPGS
-                  , jetalgo = Cone 0.4
+                  , jetalgo = AntiKTJet 0.4
                   , uploadhep = NoUploadHEP
                   , setnum  = num 
                   })
    | p <- paramSet , num <- sets     ]
 
 webdavdir :: WebDAVRemoteDir
-webdavdir = WebDAVRemoteDir "paper3/test"
+webdavdir = WebDAVRemoteDir "paper3/ttbar_LHC_c1s_scan"
