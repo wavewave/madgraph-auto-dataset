@@ -7,7 +7,7 @@ import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Model.C1V
+import HEP.Automation.MadGraph.Model.C1S
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
