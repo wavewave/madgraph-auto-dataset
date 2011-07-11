@@ -15,8 +15,7 @@ import HEP.Automation.JobQueue.JobType
 
 psetup_zph_TTBar0or1J :: ProcessSetup ZpH
 psetup_zph_TTBar0or1J = PS {  
-    mversion = MadGraph4
-  , model = ZpH
+    model = ZpH
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
   , workname   = "707_ZpH_TTBar0or1J_TEV"
