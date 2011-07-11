@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110710set2 where
+module HEP.Automation.MadGraph.Dataset.Set20110710set5 where
 
 import HEP.Storage.WebDAV.Type
 
@@ -7,22 +7,22 @@ import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Model.C1V
+import HEP.Automation.MadGraph.Model.C8S
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
 import HEP.Automation.JobQueue.JobType
 
-processSetup :: ProcessSetup C1V
+processSetup :: ProcessSetup C8S
 processSetup = PS {  
-    model = C1V
+    model = C8S
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
-  , workname   = "710_C1V_TTBar0or1J_TEV"
+  , workname   = "710_C8S_TTBar0or1J_TEV"
   }
 
-paramSet :: [ModelParam C1V]
-paramSet = [ C1VParam { mnp = m,  
+paramSet :: [ModelParam C8S]
+paramSet = [ C8SParam { mnp = m,  
                         gnpR = g,
                         gnpL = 0 } | m <- [600], g <- [1] ]
 
