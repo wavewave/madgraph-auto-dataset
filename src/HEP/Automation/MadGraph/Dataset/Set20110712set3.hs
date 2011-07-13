@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110711set1 where
+module HEP.Automation.MadGraph.Dataset.Set20110712set3 where
 
 import HEP.Storage.WebDAV.Type
 
@@ -7,28 +7,27 @@ import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Model.C1V
+import HEP.Automation.MadGraph.Model.C8S
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
 import HEP.Automation.JobQueue.JobType
 
-processSetup :: ProcessSetup C1V
+processSetup :: ProcessSetup C8S
 processSetup = PS {  
-    model = C1V
+    model = C8S
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
-  , workname   = "711_C1V_TTBar0or1J_LHC"
+  , workname   = "710_C8S_TTBar0or1J_LHC"
   }
 
-paramSet :: [ModelParam C1V]
-paramSet = [ C1VParam { mnp = m,  
-                        gnpR = g,
-                        gnpL = 0 } | m <- [200,300,400] , 
-                                     g <- [0.4,0.5..1.3]  ] 
-
--- m <- [200,400,600,800,1000]
---                                   , g <- [0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0] ]
+paramSet :: [ModelParam C8S]
+paramSet = [ C8SParam { mnp = m, gnpR = g, gnpL = 0 } 
+           | (m,g) <- [ (200,0.5), (200,1.0)
+                      , (400,0.5), (400,1.0), (400,1.5)
+                      , (600,0.5), (600,1.0), (600,1.5), (600,2.0), (600,2.5)
+                      , (800,0.5), (800,1.0), (800,1.5), (800,2.0), (800,2.5), (800,3.0)
+                      , (1000,0.5), (1000,1.0), (1000,1.5), (1000,2.0), (1000,2.5), (1000,3.0), (1000,3.5), (1000,4.0) ] ]
 
 
 sets :: [Int]
@@ -49,14 +48,14 @@ eventsets =
   [ EventSet  processSetup 
               (RS { param = p
                   , numevent = 100000
-                  , machine = LHC7 ATLAS
+                  , machine = LHC7 ATLAS 
                   , rgrun   = Fixed
                   , rgscale = 200.0
                   , match   = MLM
                   , cut     = DefCut 
                   , pythia  = RunPYTHIA
-                  , usercut = NoUserCutDef -- UserCutDef ucut --  NoUserCutDef -- 
-                  , pgs     = NoPGS -- RunPGS
+                  , usercut = UserCutDef ucut 
+                  , pgs     = RunPGS
                   , jetalgo = AntiKTJet 0.4
                   , uploadhep = NoUploadHEP
                   , setnum  = num 
@@ -64,4 +63,4 @@ eventsets =
    | p <- paramSet , num <- sets     ]
 
 webdavdir :: WebDAVRemoteDir
-webdavdir = WebDAVRemoteDir "paper3/ttbar_LHC_c1v_scan"
+webdavdir = WebDAVRemoteDir "paper3/ttbar_LHC_c8s_pgsscan"
