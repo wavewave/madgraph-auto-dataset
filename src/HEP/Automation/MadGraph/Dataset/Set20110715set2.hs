@@ -22,8 +22,11 @@ processSetup = PS {
   }
 
 paramSet :: [ModelParam FU8C1V]
-paramSet = [ FU8C1VParam { mMFV = m, dmMFV = 0, gMFV = 0.5, eta = e } 
-           | m <- [ 200,400..800] , e <- [ 0.0,0.5..3.0 ] ] 
+paramSet = [ FU8C1VParam { mMFV = m, dmMFV = 0, gMFV = 0.5, eta = e }
+           | m <- [300, 350, 450, 500, 550, 650, 700 ] 
+           , e <- [0.0,0.5..3.0] ] 
+ 
+--           | m <- [ 200,400..800] , e <- [ 0.0,0.5..3.0 ] ] 
 
 sets :: [Int]
 sets =  [1]

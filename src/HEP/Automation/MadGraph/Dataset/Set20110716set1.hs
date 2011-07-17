@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110715set1 where
+module HEP.Automation.MadGraph.Dataset.Set20110716set1 where
 
 import HEP.Storage.WebDAV.Type
 
@@ -7,29 +7,26 @@ import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Model.FU8C1V
+import HEP.Automation.MadGraph.Model.C1V
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
 import HEP.Automation.JobQueue.JobType
 
-processSetup :: ProcessSetup FU8C1V
+processSetup :: ProcessSetup C1V
 processSetup = PS {  
-    model = FU8C1V
+    model = C1V
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
-  , workname   = "715_FU8C1V_TTBar0or1J_LHC"
+  , workname   = "716_C1V_TTBar0or1J_LHC"
   }
 
-paramSet :: [ModelParam FU8C1V]
-paramSet = [ FU8C1VParam { mMFV = m, dmMFV = 0, gMFV = 0.5, eta = e } 
-           | m <- [300, 350, 450, 500, 550, 650, 700 ] 
-           , e <- [0.0,0.5..3.0] ] 
-
---           | m <- [ 200,400..800] , e <- [ 0.0,0.5..3.0 ] ] 
+paramSet :: [ModelParam C1V]
+paramSet = [ C1VParam { mnp = m, gnpR = g, gnpL = 0 } 
+           | (m,g) <- [(600,1.45), (600,1.5), (800,2.0), (800,1.9), (800,2.1) ] ] 
 
 sets :: [Int]
-sets =  [1]
+sets =  [1..50]
 
 ucut :: UserCut 
 ucut = UserCut { 
@@ -52,7 +49,7 @@ eventsets =
                   , match   = MLM
                   , cut     = DefCut 
                   , pythia  = RunPYTHIA
-                  , usercut = UserCutDef ucut
+                  , usercut = UserCutDef ucut --  NoUserCutDef -- 
                   , pgs     = RunPGS
                   , jetalgo = AntiKTJet 0.4
                   , uploadhep = NoUploadHEP
@@ -61,4 +58,4 @@ eventsets =
    | p <- paramSet , num <- sets     ]
 
 webdavdir :: WebDAVRemoteDir
-webdavdir = WebDAVRemoteDir "paper3/ttbar_LHC_FU8C1V_pgsscan"
+webdavdir = WebDAVRemoteDir "paper3/ttbar_LHC_c1v_big"
