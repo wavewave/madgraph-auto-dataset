@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110716set4 where
+module HEP.Automation.MadGraph.Dataset.Set20110717set8TEV where
 
 import HEP.Storage.WebDAV.Type
 
@@ -7,31 +7,30 @@ import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Model.SChanC8Vschmaltz
+import HEP.Automation.MadGraph.Model.C1V
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
 import HEP.Automation.JobQueue.JobType
 
-processSetup :: ProcessSetup SChanC8Vschmaltz
+processSetup :: ProcessSetup C1V
 processSetup = PS {  
-    model = SChanC8Vschmaltz
+    model = C1V
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
-  , workname   = "713_SChanC8Vschmaltz_TTBar0or1J_TEV"
+  , workname   = "716_C1V_TTBar0or1J_TEV"
   }
 
-paramSet :: [ModelParam SChanC8Vschmaltz]
-paramSet = [ SChanC8VschmaltzParam { mnp = m, mphi = 100.0, ga = g, nphi = n }
-{-           | m <- [ 420, 440 ] 
-           , g <- [ 0.35, 0.45 .. 0.65 ]
-           , n <- [ 4,5,6,7 ] ] -}
- 
-           | m <- [ 420 ]  
-           , (g,n) <- [ (0.39*1.22,6.2), (0.37*1.22,5.3 ), (0.35*1.22,4.27) ]  ]  
-           
+paramSet :: [ModelParam C1V]
+paramSet = [ C1VParam { mnp = m, gnpR = g, gnpL = 0 } 
+--           | (m,g) <- [ (400,1.3) ] ]
+           | (m,g) <- [ (200,0.7) ] ] -- , (400,1.3) ] ] 
+
+
+--           | (m,g) <- [(600,1.45), (600,1.5), (800,2.0), (800,1.9), (800,2.1) ] ] 
+
 sets :: [Int]
-sets =  [1]
+sets =  [1..50]
 
 ucut :: UserCut 
 ucut = UserCut { 
@@ -63,4 +62,4 @@ eventsets =
    | p <- paramSet , num <- sets     ]
 
 webdavdir :: WebDAVRemoteDir
-webdavdir = WebDAVRemoteDir "paper3/ttbar_TEV_schmaltz_pgsscan"
+webdavdir = WebDAVRemoteDir "paper3/ttbar_TEV_c1v_big"

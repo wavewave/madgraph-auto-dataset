@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110716set1 where
+module HEP.Automation.MadGraph.Dataset.Set20110718set2TEV where
 
 import HEP.Storage.WebDAV.Type
 
@@ -7,26 +7,29 @@ import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Model.C1V
+import HEP.Automation.MadGraph.Model.SChanC8V
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
 import HEP.Automation.JobQueue.JobType
 
-processSetup :: ProcessSetup C1V
+processSetup :: ProcessSetup SChanC8V
 processSetup = PS {  
-    model = C1V
+    model = SChanC8V
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
-  , workname   = "716_C1V_TTBar0or1J_LHC"
+  , workname   = "718_SChanC8V_TTBar0or1J_TEV"
   }
 
-paramSet :: [ModelParam C1V]
-paramSet = [ C1VParam { mnp = m, gnpR = g, gnpL = 0 } 
-           | (m,g) <- [(600,1.45), (600,1.5), (800,2.0), (800,1.9), (800,2.1) ] ] 
-
+paramSet :: [ModelParam SChanC8V]
+paramSet = [ SChanC8VParam { mnp = m, gnpqR = -g, gnpqL = g, 
+                             gnpbR = g, gnpbL = -g,
+                             gnptR = g, gnptL = -g }
+           | m <- [2000,2200,2400] 
+           , g <- [2.0,2.2..3.6] ]
+          
 sets :: [Int]
-sets =  [1..50]
+sets =  [1]
 
 ucut :: UserCut 
 ucut = UserCut { 
@@ -43,19 +46,19 @@ eventsets =
   [ EventSet  processSetup 
               (RS { param = p
                   , numevent = 100000
-                  , machine = LHC7 ATLAS
+                  , machine = TeVatron
                   , rgrun   = Fixed
                   , rgscale = 200.0
                   , match   = MLM
                   , cut     = DefCut 
                   , pythia  = RunPYTHIA
-                  , usercut = UserCutDef ucut --  NoUserCutDef -- 
+                  , usercut = UserCutDef ucut 
                   , pgs     = RunPGS
-                  , jetalgo = AntiKTJet 0.4
+                  , jetalgo = Cone 0.4
                   , uploadhep = NoUploadHEP
                   , setnum  = num 
                   })
    | p <- paramSet , num <- sets     ]
 
 webdavdir :: WebDAVRemoteDir
-webdavdir = WebDAVRemoteDir "paper3/ttbar_LHC_c1v_big"
+webdavdir = WebDAVRemoteDir "paper3/ttbar_TEV_schanc8v_pgsscan"

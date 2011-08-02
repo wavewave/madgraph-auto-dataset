@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110716set3 where
+module HEP.Automation.MadGraph.Dataset.Set20110710set7 where
 
 import HEP.Storage.WebDAV.Type
 
@@ -7,56 +7,55 @@ import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Model.SChanC8Vschmaltz
+import HEP.Automation.MadGraph.Model.C1V
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
 import HEP.Automation.JobQueue.JobType
 
-processSetup :: ProcessSetup SChanC8Vschmaltz
-processSetup = PS {  
-    model = SChanC8Vschmaltz
+processsetup :: ProcessSetup C1V
+processsetup = PS {  
+    model = C1V
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
-  , workname   = "713_SChanC8Vschmaltz_TTBar0or1J_LHC"
+  , workname   = "C1VtestNext"
   }
 
-paramSet :: [ModelParam SChanC8Vschmaltz]
-paramSet = [ SChanC8VschmaltzParam { mnp = m, mphi = 100.0, ga = g, nphi = n} 
-           | m <- [ 420, 440 ] 
-           , g <- [ 0.35, 0.45 .. 0.65 ]
-           , n <- [ 4,5,6,7 ] ]
+paramSet :: [ModelParam C1V]
+paramSet = [ C1VParam { mnp = 500.0,  
+                        gnpR = 1.0, 
+                        gnpL = 0.0 } ]
+              
 
-{-           | m <- [ 420 ]  
-           , (g,n) <- [ (0.39*1.22,6.2), (0.37*1.22,5.3 ), (0.35*1.22,4.27) ]  ]  -}
-           
+psetuplist :: [ProcessSetup C1V ]
+psetuplist = [ processsetup ]
 
 sets :: [Int]
-sets =  [1]
+sets = [1] 
 
 ucut :: UserCut 
 ucut = UserCut { 
     uc_metcut = 15.0
-  , uc_etacutlep = 2.7
+  , uc_etacutlep = 1.2
   , uc_etcutlep = 18.0 
-  , uc_etacutjet = 2.7
+  , uc_etacutjet = 2.5
   , uc_etcutjet = 15.0 
 }
 
 
 eventsets :: [EventSet]
 eventsets =  
-  [ EventSet  processSetup 
+  [ EventSet  processsetup 
               (RS { param = p
-                  , numevent = 100000
+                  , numevent = 10000
                   , machine = LHC7 ATLAS
                   , rgrun   = Fixed
                   , rgscale = 200.0
                   , match   = MLM
                   , cut     = DefCut 
                   , pythia  = RunPYTHIA
-                  , usercut = UserCutDef ucut --  NoUserCutDef -- 
-                  , pgs     = RunPGS
+                  , usercut = NoUserCutDef -- UserCutDef ucut
+                  , pgs     = NoPGS -- RunPGS
                   , jetalgo = AntiKTJet 0.4
                   , uploadhep = NoUploadHEP
                   , setnum  = num 
@@ -64,4 +63,4 @@ eventsets =
    | p <- paramSet , num <- sets     ]
 
 webdavdir :: WebDAVRemoteDir
-webdavdir = WebDAVRemoteDir "paper3/ttbar_LHC_schmaltz_pgsscan"
+webdavdir = WebDAVRemoteDir "paper3/test"

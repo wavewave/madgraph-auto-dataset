@@ -1,4 +1,4 @@
-module HEP.Automation.MadGraph.Dataset.Set20110716set4 where
+module HEP.Automation.MadGraph.Dataset.Set20110717set6TEV where
 
 import HEP.Storage.WebDAV.Type
 
@@ -7,31 +7,26 @@ import HEP.Automation.MadGraph.Machine
 import HEP.Automation.MadGraph.UserCut
 import HEP.Automation.MadGraph.SetupType
 
-import HEP.Automation.MadGraph.Model.SChanC8Vschmaltz
+import HEP.Automation.MadGraph.Model.Trip
 
 import HEP.Automation.MadGraph.Dataset.Processes
 
 import HEP.Automation.JobQueue.JobType
 
-processSetup :: ProcessSetup SChanC8Vschmaltz
+processSetup :: ProcessSetup Trip
 processSetup = PS {  
-    model = SChanC8Vschmaltz
+    model = Trip
   , process = preDefProcess TTBar0or1J
   , processBrief = "TTBar0or1J" 
-  , workname   = "713_SChanC8Vschmaltz_TTBar0or1J_TEV"
+  , workname   = "717_Trip_TTBar0or1J_TEV"
   }
 
-paramSet :: [ModelParam SChanC8Vschmaltz]
-paramSet = [ SChanC8VschmaltzParam { mnp = m, mphi = 100.0, ga = g, nphi = n }
-{-           | m <- [ 420, 440 ] 
-           , g <- [ 0.35, 0.45 .. 0.65 ]
-           , n <- [ 4,5,6,7 ] ] -}
- 
-           | m <- [ 420 ]  
-           , (g,n) <- [ (0.39*1.22,6.2), (0.37*1.22,5.3 ), (0.35*1.22,4.27) ]  ]  
-           
+paramSet :: [ModelParam Trip]
+paramSet = [ TripParam { massTrip = m, gRTrip = g } 
+           | (m,g) <- [ (800,4.15) , (600,3.4), (400,2.95) ]  ] 
+
 sets :: [Int]
-sets =  [1]
+sets =  [1..50]
 
 ucut :: UserCut 
 ucut = UserCut { 
@@ -63,4 +58,4 @@ eventsets =
    | p <- paramSet , num <- sets     ]
 
 webdavdir :: WebDAVRemoteDir
-webdavdir = WebDAVRemoteDir "paper3/ttbar_TEV_schmaltz_pgsscan"
+webdavdir = WebDAVRemoteDir "paper3/ttbar_TEV_trip_big"
